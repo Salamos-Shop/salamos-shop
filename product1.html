@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 16 Pro Max - متجرنا الإلكتروني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #4169E1;
+            --secondary-blue: #87CEEB;
+            --light-bg: #F7F9FC;
+            --dark-text: #333333;
+            --gray-text: #666666;
+            --border-color: #DDDDDD;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--dark-text);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* شريط التنقل */
+        .product-nav {
+            background-color: white;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .product-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        
+        .back-btn {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        /* محتوى المنتج */
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .product-gallery {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: var(--light-bg);
+        }
+        
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .thumbnail {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .thumbnail:hover {
+            border-color: var(--primary-blue);
+        }
+        
+        .product-details {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+        
+        .product-brand {
+            color: var(--gray-text);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .stars {
+            color: #FFB800;
+            margin-left: 5px;
+        }
+        
+        .rating-count {
+            color: var(--primary-blue);
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .price-container {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: var(--light-bg);
+            border-radius: 8px;
+        }
+        
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--dark-text);
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: var(--gray-text);
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        
+        .discount {
+            color: #E53935;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .delivery-info {
+            margin: 15px 0;
+            font-size: 14px;
+            color: var(--gray-text);
+        }
+        
+        .delivery-info i {
+            color: var(--primary-blue);
+            margin-left: 5px;
+        }
+        
+        .color-options {
+            margin: 20px 0;
+        }
+        
+        .option-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .colors {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .color {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .color.selected {
+            border-color: var(--primary-blue);
+        }
+        
+        .storage-options {
+            margin: 20px 0;
+        }
+        
+        .storage {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        .storage.selected {
+            border-color: var(--primary-blue);
+            background-color: var(--light-bg);
+            color: var(--primary-blue);
+        }
+        
+        .action-buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .buy-now {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            flex: 1;
+            font-size: 16px;
+        }
+        
+        .add-to-cart {
+            background-color: white;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            flex: 1;
+            font-size: 16px;
+        }
+        
+        .product-description {
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+        
+        .description-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .description-text {
+            line-height: 1.6;
+            color: var(--gray-text);
+        }
+        
+        @media (max-width: 768px) {
+            .main-image {
+                height: 300px;
+            }
+            
+            .product-title {
+                font-size: 20px;
+            }
+            
+            .price {
+                font-size: 24px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل العلوي -->
+    <nav class="product-nav">
+        <div class="container">
+            <div class="logo">متجرنا</div>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-right"></i> العودة للمتجر
+            </a>
+        </div>
+    </nav>
+    
+    <!-- محتوى الصفحة -->
+    <div class="container">
+        <div class="product-container">
+            <!-- معرض الصور -->
+            <div class="product-gallery">
+                <img src="https://m.media-amazon.com/images/I/61bK6PMOC3L._AC_UF1000,1000_QL80_.jpg" alt="iPhone 16 Pro Max" class="main-image" id="mainImage">
+                
+                <div class="thumbnail-container">
+                    <img src="https://m.media-amazon.com/images/I/61bK6PMOC3L._AC_UF1000,1000_QL80_.jpg" alt="iPhone 16 Pro Max - زاوية أمامية" class="thumbnail" onclick="changeImage(this)">
+                    <img src="https://m.media-amazon.com/images/I/71yzJoE7WlL._AC_UF1000,1000_QL80_.jpg" alt="iPhone 16 Pro Max - زاوية خلفية" class="thumbnail" onclick="changeImage(this)">
+                    <img src="https://m.media-amazon.com/images/I/81f5CU5OB-L._AC_UF1000,1000_QL80_.jpg" alt="iPhone 16 Pro Max - الجانب" class="thumbnail" onclick="changeImage(this)">
+                    <img src="https://m.media-amazon.com/images/I/71xb2xEc5PL._AC_UF1000,1000_QL80_.jpg" alt="iPhone 16 Pro Max - الشاشة" class="thumbnail" onclick="changeImage(this)">
+                </div>
+            </div>
+            
+            <!-- تفاصيل المنتج -->
+            <div class="product-details">
+                <h1 class="product-title">iPhone 16 Pro Max - 256GB</h1>
+                <p class="product-brand">من Apple</p>
+                
+                <div class="rating">
+                    <span class="rating-count">(248 تقييم)</span>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="price-container">
+                    <span class="old-price">4,499 ر.س</span>
+                    <span class="price">3,999 د.إ</span>
+                    <span class="discount">خصم 11%</span>
+                </div>
+                
+                <div class="delivery-info">
+                    <i class="fas fa-truck"></i> توصيل مجاني خلال 2-4 أيام عمل
+                </div>
+                
+                <div class="color-options">
+                    <div class="option-title">اللون:</div>
+                    <div class="colors">
+                        <div class="color selected" style="background-color: #3A5169;" onclick="selectColor(this)"></div>
+                        <div class="color" style="background-color: #F5F5F7;" onclick="selectColor(this)"></div>
+                        <div class="color" style="background-color: #A50011;" onclick="selectColor(this)"></div>
+                        <div class="color" style="background-color: #1F2020;" onclick="selectColor(this)"></div>
+                    </div>
+                </div>
+                
+                <div class="storage-options">
+                    <div class="option-title">سعة التخزين:</div>
+                    <div class="storage selected" onclick="selectStorage(this)">256GB</div>
+                    <div class="storage" onclick="selectStorage(this)">512GB</div>
+                    <div class="storage" onclick="selectStorage(this)">1TB</div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="buy-now">اشتري الآن</button>
+                    <button class="add-to-cart">أضف إلى السلة</button>
+                </div>
+                
+                <div class="product-description">
+                    <h3 class="description-title">وصف المنتج</h3>
+                    <p class="description-text">
+                        iPhone 16 Pro Max يأتي بشاشة Super Retina XDR بحجم 6.7 بوصة، مع شريحة A18 Bionic الأسرع على الإطلاق. 
+                        يحتوي على نظام كاميرا متطور بثلاث عدسات 48 ميجابكسل، مع تحسينات كبيرة في التصوير الليلي والفيديو 8K. 
+                        هيكل من التيتانيوم المقاوم للخدش، مع مقاومة للماء والغبار IP68. 
+                        بطارية تدوم طوال اليوم مع دعم الشحن السريع والشحن اللاسلكي MagSafe.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // تغيير الصورة الرئيسية عند النقر على الصور المصغرة
+        function changeImage(thumbnail) {
+            document.getElementById('mainImage').src = thumbnail.src;
+        }
+        
+        // اختيار اللون
+        function selectColor(colorElement) {
+            document.querySelectorAll('.color').forEach(color => {
+                color.classList.remove('selected');
+            });
+            colorElement.classList.add('selected');
+        }
+        
+        // اختيار سعة التخزين
+        function selectStorage(storageElement) {
+            document.querySelectorAll('.storage').forEach(storage => {
+                storage.classList.remove('selected');
+            });
+            storageElement.classList.add('selected');
+        }
+        
+        // إضافة إلى السلة
+        document.querySelector('.add-to-cart').addEventListener('click', function() {
+            alert('تمت إضافة المنتج إلى سلة التسوق');
+        });
+        
+        // شراء الآن
+        document.querySelector('.buy-now').addEventListener('click', function() {
+            alert('سيتم توجيهك إلى صفحة الدفع');
+        });
+    </script>
+</body>
+</html>
