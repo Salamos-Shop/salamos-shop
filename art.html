@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الرسومات الفنية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-text: #333;
+            --light-text: #fff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .gallery-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .gallery-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .gallery-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .artwork-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .artwork-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .artwork-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .artwork-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: var(--light-text);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .artwork-card:hover .artwork-overlay {
+            opacity: 1;
+        }
+
+        .artwork-title {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .artwork-artist {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .artwork-price {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        .artwork-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .action-btn {
+            background: var(--secondary-color);
+            color: var(--light-text);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .action-btn:hover {
+            background: #c0392b;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 600px;
+        }
+
+        .lightbox-img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+            background: #f5f5f5;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .lightbox-details {
+            padding: 20px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .lightbox-details h2 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+
+        .lightbox-details p {
+            margin-bottom: 5px;
+        }
+
+        .artist-info {
+            color: #192a80;
+            font-weight: 700;
+            background-color: #6885ef;
+            border-radius: 5px;
+            border: solid black 2px;
+            padding: 5px 10px;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .price-info {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .gallery-header h1 {
+                font-size: 2rem;
+            }
+
+            .lightbox-content {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filter-buttons {
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 6px 15px;
+                font-size: 0.9rem;
+            }
+
+            .artwork-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .action-btn {
+                justify-content: center;
+            }
+        }
+
+        .back-btn {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 16px;
+            margin: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-right"></i> العودة للمتجر
+    </a>
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <h1>معرض الرسومات الفنية</h1>
+            <p>اكتشف مجموعة مختارة من أجمل الأعمال الفنية التي تتناسب مع كل الأذواق</p>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="abstract">الفن التجريدي</button>
+            <button class="filter-btn" data-filter="congs">تهانئ</button>
+            <button class="filter-btn" data-filter="modern">الفن الحديث</button>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- رسمة 1 -->
+            <div class="artwork-card" data-category="modern">
+                <img src="ART/black.jpg" alt="رسمة أنمي" class="artwork-img">
+                <div class="artwork-overlay">
+                    <h3 class="artwork-title">انمي</h3>
+                    <p class="artwork-artist">الفنان: عمر محمود</p>
+                    <p class="artwork-price">5 د.ا</p>
+                    <div class="artwork-actions">
+                        <button class="action-btn view-btn" data-img="ART/black.jpg" data-title="انمي" data-artist="عمر محمود" data-price="5 د.ا">
+                            <i class="fas fa-expand"></i> عرض
+                        </button>
+                        <a href="contact.html" class="action-btn">
+                            <i class="fas fa-shopping-cart"></i> شراء
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- رسمة 2 -->
+            <div class="artwork-card" data-category="congs">
+                <img src="ART/eid.jpg" alt="تهنئة بالعيد" class="artwork-img">
+                <div class="artwork-overlay">
+                    <h3 class="artwork-title">تهنئة بالعيد</h3>
+                    <p class="artwork-artist">الفنان: عمر محمود</p>
+                    <p class="artwork-price">5 د.ا</p>
+                    <div class="artwork-actions">
+                        <button class="action-btn view-btn" data-img="ART/eid.jpg" data-title="تهنئة بالعيد" data-artist="عمر محمود" data-price="5 د.ا">
+                            <i class="fas fa-expand"></i> عرض
+                        </button>
+                        <a href="contact.html" class="action-btn">
+                            <i class="fas fa-shopping-cart"></i> شراء
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- رسمة 3 -->
+            <div class="artwork-card" data-category="abstract">
+                <img src="ART/gohan.jpg" alt="رسمة أنمي" class="artwork-img">
+                <div class="artwork-overlay">
+                    <h3 class="artwork-title">صورة أنمي</h3>
+                    <p class="artwork-artist">الفنان: عمر محمود</p>
+                    <p class="artwork-price">5 د.ا</p>
+                    <div class="artwork-actions">
+                        <button class="action-btn view-btn" data-img="ART/gohan.jpg" data-title="صورة أنمي" data-artist="عمر محمود" data-price="5 د.ا">
+                            <i class="fas fa-expand"></i> عرض
+                        </button>
+                        <a href="contact.html" class="action-btn">
+                            <i class="fas fa-shopping-cart"></i> شراء
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- رسمة 4 -->
+            <div class="artwork-card" data-category="abstract">
+                <img src="ART/nezoko.jpg" alt="رسمة أنمي" class="artwork-img">
+                <div class="artwork-overlay">
+                    <h3 class="artwork-title">صورة أنمي</h3>
+                    <p class="artwork-artist">الفنان: عمر محمود</p>
+                    <p class="artwork-price">5 د.ا</p>
+                    <div class="artwork-actions">
+                        <button class="action-btn view-btn" data-img="ART/nezoko.jpg" data-title="صورة أنمي" data-artist="عمر محمود" data-price="5 د.ا">
+                            <i class="fas fa-expand"></i> عرض
+                        </button>
+                        <a href="contact.html" class="action-btn">
+                            <i class="fas fa-shopping-cart"></i> شراء
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- رسمة 5 -->
+            <div class="artwork-card" data-category="abstract">
+                <img src="ART/tanjiro.jpg" alt="رسمة أنمي" class="artwork-img">
+                <div class="artwork-overlay">
+                    <h3 class="artwork-title">صورة أنمي</h3>
+                    <p class="artwork-artist">الفنان: عمر محمود</p>
+                    <p class="artwork-price">5 د.ا</p>
+                    <div class="artwork-actions">
+                        <button class="action-btn view-btn" data-img="ART/tanjiro.jpg" data-title="صورة أنمي" data-artist="عمر محمود" data-price="5 د.ا">
+                            <i class="fas fa-expand"></i> عرض
+                        </button>
+                        <a href="contact.html" class="action-btn">
+                            <i class="fas fa-shopping-cart"></i> شراء
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="close-btn" id="close-btn">&times;</span>
+            <img src="" alt="" class="lightbox-img" id="lightbox-img">
+            <div class="lightbox-details">
+                <h2 id="lightbox-title"></h2>
+                <p class="artist-info" id="lightbox-artist"></p>
+                <p class="price-info" id="lightbox-price"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // تصفية الأعمال الفنية
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const artworkCards = document.querySelectorAll('.artwork-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // إزالة النشط من جميع الأزرار
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // إضافة النشط للزر المحدد
+                    button.classList.add('active');
+
+                    const filterValue = button.getAttribute('data-filter');
+
+                    artworkCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Lightbox
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxArtist = document.getElementById('lightbox-artist');
+            const lightboxPrice = document.getElementById('lightbox-price');
+            const closeBtn = document.getElementById('close-btn');
+            const viewButtons = document.querySelectorAll('.view-btn');
+
+            viewButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const imgSrc = button.getAttribute('data-img');
+                    const title = button.getAttribute('data-title');
+                    const artist = button.getAttribute('data-artist');
+                    const price = button.getAttribute('data-price');
+
+                    lightboxImg.src = imgSrc;
+                    lightboxTitle.textContent = title;
+                    lightboxArtist.textContent = `الفنان: ${artist}`;
+                    lightboxPrice.textContent = `السعر: ${price}`;
+
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -7,27 +7,89 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* إضافات جديدة للـ Nav Bar فقط */
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--dark-text);
+            
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+            }
+
+            .nav.active {
+                display: block;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                overflow: hidden;
+            }
+
+            .nav ul li {
+                border-bottom: 1px solid #000000;
+                margin-left: 0;
+            }
+
+            .nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            .nav ul li a {
+                display: block;
+                padding: 12px 20px;
+                color: #000000;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- شريط التنقل العلوي -->
+    <!-- شريط التنقل العلوي المعدل -->
     <header class="header">
         <div class="container">
             <div class="logo">
                 <img src="images/logo.png" alt="شعار المتجر" class="logo-img">
             </div>
-            <nav class="nav">
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav class="nav" id="mainNav">
                 <ul>
                     <li><a href="#home" class="active">الصفحة الرئيسية</a></li>
                     <li><a href="#products">المنتجات</a></li>
                     <li><a href="#services">الخدمات</a></li>
                     <li><a href="#about">قصتنا</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- الصفحة الترحيبية -->
+    <!-- باقي المحتوى كما هو -->
     <section id="home" class="hero-section">
         <div class="container">
             <div class="hero-content">
@@ -60,8 +122,17 @@
                     </div>
                 </div>
 
-
-
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/iphon-black.jpg" alt="منتج 1">
+                    </div>
+                    <div class="product-info">
+                        <h3>اسم المنتج</h3>
+                        <p class="product-desc">وصف مختصر للمنتج</p>
+                        <p class="product-price">$199</p>
+                        <a href="product1.html" class="add-to-cart">الذهاب للمنتج</a>
+                    </div>
+                </div>
 
                 <div class="product-card">
                     <div class="product-image">
@@ -75,10 +146,6 @@
                     </div>
                 </div>
 
-
-
-
-
                 <div class="product-card">
                     <div class="product-image">
                         <img src="images/iphon-black.jpg" alt="منتج 1">
@@ -90,22 +157,6 @@
                         <a href="product1.html" class="add-to-cart">الذهاب للمنتج</a>
                     </div>
                 </div>
-
-
-
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/iphon-black.jpg" alt="منتج 1">
-                    </div>
-                    <div class="product-info">
-                        <h3>اسم المنتج</h3>
-                        <p class="product-desc">وصف مختصر للمنتج</p>
-                        <p class="product-price">$199</p>
-                        <a href="product1.html" class="add-to-cart">الذهاب للمنتج</a>
-                    </div>
-                </div>
-                <!-- المزيد من بطاقات المنتجات -->
             </div>
         </div>
     </section>
@@ -122,7 +173,7 @@
                     </div>
                     <h3>تصميم موقع ويب</h3>
                     <p>نقدم خدمة تصميم مواقع ويب احترافية بتقنيات حديثة</p>
-                    <a href="#" class="read-more service-btn">المزيد <i class="fas fa-arrow-left"></i></a>
+                    <a href="web service.html" class="read-more service-btn">المزيد <i class="fas fa-arrow-left"></i></a>
                 </div>
 
                 <div class="service-card">
@@ -131,7 +182,7 @@
                     </div>
                     <h3>مونتاج فيديو</h3>
                     <p>نقدم لكم خدمه مونتاج فيديو متكامل</p>
-                    <a href="#" class="read-more service-btn">المزيد <i class="fas fa-arrow-left"></i></a>
+                    <a href="video edit.html" class="read-more service-btn">المزيد <i class="fas fa-arrow-left"></i></a>
                 </div>
                 
                 <div class="service-card">
@@ -140,7 +191,7 @@
                     </div>
                     <h3>بيع صور</h3>
                     <p>لدينا رسومات مميزه من فنان مبدع</p>
-                    <a href="#" class="read-more service-btn">المزيد <i class="fas fa-arrow-left"></i></a>
+                    <a href="art.html" class="read-more service-btn">المزيد <i class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
         </div>
@@ -174,7 +225,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- تذييل الصفحة -->
     <footer class="footer">
@@ -217,8 +267,29 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav ul li a');
+            // كود جديد لإدارة القائمة المنسدلة
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
             
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                this.querySelector('i').classList.toggle('fa-bars');
+                this.querySelector('i').classList.toggle('fa-times');
+            });
+            
+            // إغلاق القائمة عند النقر على رابط
+            const navLinks = document.querySelectorAll('.nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 768) {
+                        mainNav.classList.remove('active');
+                        menuToggle.querySelector('i').classList.remove('fa-times');
+                        menuToggle.querySelector('i').classList.add('fa-bars');
+                    }
+                });
+            });
+            
+            // الكود الأصلي لتمييز القسم النشط
             window.addEventListener('scroll', function() {
                 const currentPosition = window.scrollY + 100;
                 
@@ -233,7 +304,7 @@
                 });
             });
             
-            // Smooth scrolling for all links
+            // التمرير السلس
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();

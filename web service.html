@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تصميم مواقع الويب - متجرنا الإلكتروني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #4169E1;
+            --secondary-blue: #87CEEB;
+            --light-bg: #F7F9FC;
+            --dark-text: #333333;
+            --gray-text: #666666;
+            --border-color: #DDDDDD;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--dark-text);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* شريط التنقل */
+        .header {
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        
+        .nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav ul li {
+            margin-left: 20px;
+        }
+        
+        .nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .user-actions a {
+            color: var(--dark-text);
+            margin-right: 15px;
+            text-decoration: none;
+        }
+        
+        /* محتوى صفحة الخدمة */
+        .service-header {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .service-header h1 {
+            font-size: 36px;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        .service-header p {
+            font-size: 18px;
+            color: var(--gray-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .service-content {
+            display: flex;
+            gap: 40px;
+            margin: 50px 0;
+        }
+        
+        .service-details {
+            flex: 2;
+        }
+        
+        .service-features {
+            flex: 1;
+        }
+        
+        .service-section {
+            margin-bottom: 40px;
+        }
+        
+        .service-section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 24px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .service-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-blue);
+        }
+        
+        .service-section p {
+            line-height: 1.8;
+            color: var(--gray-text);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-card h3 i {
+            margin-left: 10px;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 20px 0;
+        }
+        
+        .price span {
+            font-size: 16px;
+            color: var(--gray-text);
+        }
+        
+        .price-features {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .price-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .price-features li i {
+            color: var(--primary-blue);
+            margin-left: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #2a4fc5;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(65, 105, 225, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        /* معرض أعمال */
+        .portfolio {
+            margin: 60px 0;
+        }
+        
+        .portfolio h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+            font-size: 28px;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .portfolio-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .portfolio-item-info {
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .portfolio-item-info h3 {
+            margin-bottom: 5px;
+        }
+        
+        .portfolio-item-info p {
+            color: var(--gray-text);
+            font-size: 14px;
+        }
+        
+        /* نموذج الاتصال */
+        .contact-form {
+            background-color: var(--light-bg);
+            padding: 40px;
+            border-radius: 8px;
+            margin: 60px 0;
+        }
+        
+        .contact-form h2 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: 'Tajawal', Arial, sans-serif;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        /* رسائل النموذج */
+        .form-message {
+            display: none;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .form-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        
+        .form-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        
+        /* تذييل الصفحة */
+        .footer {
+            background-color: var(--dark-text);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: var(--secondary-blue);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-section ul li i {
+            margin-left: 8px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .service-content {
+                flex-direction: column;
+            }
+            
+            .service-header h1 {
+                font-size: 28px;
+            }
+            
+            .header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .nav ul li {
+                margin: 0 10px 5px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">متجرنا</div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="products.html">المنتجات</a></li>
+                    <li><a href="services.html" class="active">الخدمات</a></li>
+                    <li><a href="about.html">عن المتجر</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+
+    <!-- محتوى صفحة الخدمة -->
+    <main>
+        <div class="container">
+            <div class="service-header">
+                <h1>تصميم مواقع الويب الاحترافية</h1>
+                <p>نقدم حلولاً متكاملة لتصميم وتطوير مواقع الويب التي تلبي احتياجات عملك وتبرز هويتك في العالم الرقمي</p>
+            </div>
+            
+            <div class="service-content">
+                <div class="service-details">
+                    <div class="service-section">
+                        <h2>نظرة عامة على الخدمة</h2>
+                        <p>في عالم يعتمد بشكل متزايد على الرقمية، يعد وجود موقع ويب احترافي أمرًا ضروريًا لأي عمل تجاري. نقدم خدمات تصميم مواقع الويب التي تجمع بين الجماليات والوظائف لإنشاء تجربة مستخدم استثنائية.</p>
+                        <p>سواء كنت بحاجة إلى موقع ويب بسيط أو متجر إلكتروني متكامل، فإن فريقنا من المصممين والمطورين المؤهلين سيعملون معك لتحقيق رؤيتك.</p>
+                    </div>
+                    
+                    <div class="service-section">
+                        <h2>ماذا نقدم؟</h2>
+                        <p>نحن نقدم حزمة متكاملة من خدمات تصميم وتطوير الويب تشمل:</p>
+                        
+                        <div class="feature-card">
+                            <h3><i class="fas fa-paint-brush"></i>تصميم مخصص</h3>
+                            <p>تصميم فريد ومخصص لموقعك يعكس هوية علامتك التجارية ويجذب عملائك المستهدفين.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h3><i class="fas fa-mobile-alt"></i>تصميم متجاوب</h3>
+                            <p>مواقع تعمل بشكل مثالي على جميع الأجهزة من أجهزة الكمبيوتر إلى الهواتف الذكية والأجهزة اللوحية.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h3><i class="fas fa-shopping-cart"></i>متاجر إلكترونية</h3>
+                            <p>حلول متكاملة للمتاجر الإلكترونية مع أنظمة دفع وشحن وإدارة مخزون.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h3><i class="fas fa-tachometer-alt"></i>أداء عالي</h3>
+                            <p>تحسين أداء الموقع لضمان سرعة التحميل وأفضل تجربة للمستخدم.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-section">
+                        <h2>عملية التصميم</h2>
+                        <p>نتبع عملية منهجية لضمان تحقيق أفضل النتائج:</p>
+                        <ol style="padding-right: 20px; color: var(--gray-text); line-height: 1.8;">
+                            <li>الاستماع إلى متطلباتك وأهدافك</li>
+                            <li>التخطيط والهيكلة</li>
+                            <li>تصميم الواجهات</li>
+                            <li>التطوير والبرمجة</li>
+                            <li>الاختبار والتحسين</li>
+                            <li>الإطلاق والدعم</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="service-features">
+                    <div class="pricing-card">
+                        <h3>حزمة تصميم الموقع الأساسي</h3>
+                        <div class="price" style="text-decoration: underline;">99 <span style="font-size: 0.9em;">درهم </span></div>
+                        <ul class="price-features">
+                            <li><i class="fas fa-check"></i>تصميم 5 صفحات</li>
+                            <li><i class="fas fa-check"></i>استجابة للهواتف</li>
+                            <li><i class="fas fa-check"></i>نموذج اتصال</li>
+                            <li><i class="fas fa-check"></i>خريطة الموقع</li>
+                            <li><i class="fas fa-check"></i>دعم لمدة شهر</li>
+                        </ul>
+                        <a href="contact.html" class="btn">اطلب الخدمة الآن</a>
+                    </div>
+                    
+                    <div class="contact-card" style="background-color: var(--light-bg); padding: 20px; border-radius: 8px; margin-top: 30px;">
+                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">هل لديك استفسار؟</h3>
+                        <p style="color: var(--gray-text); margin-bottom: 15px;">نحن هنا لمساعدتك في أي استفسار لديك حول خدماتنا.</p>
+                        <a href="contact.html" class="btn btn-outline">اتصل بنا</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- معرض أعمال -->
+            <div class="portfolio">
+                <h2>معرض أعمالنا</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="images/shop2.png" alt="موقع تجاري">
+                        <div class="portfolio-item-info">
+                            <h3>موقع تجاري</h3>
+                            <p>تصميم موقع لشركة تجارية</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <img src="images/shop.png" alt="متجر إلكتروني">
+                        <div class="portfolio-item-info">
+                            <h3>متجر إلكتروني</h3>
+                            <p>تصميم متجر لبيع المنتجات</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <img src="images/profilio.png" alt="موقع شخصي">
+                        <div class="portfolio-item-info">
+                            <h3>موقع شخصي</h3>
+                            <p>تصميم موقع لصاحب عمل حر</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن المتجر</h3>
+                    <p>متجرنا الإلكتروني يقدم حلولاً رقمية متكاملة لمساعدة الأعمال على النمو في العالم الرقمي.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="تيك توك"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-left"></i> المنتجات</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-left"></i> الخدمات</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-left"></i> عن المتجر</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@store.com</li>
+                        <li><i class="fas fa-phone"></i> +966 12 345 6789</li>
+                    </ul>
+                </div>
+                
+            
+            <div class="copyright">
+                <p>&copy; 2023 متجرنا الإلكتروني. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // معالجة إرسال النموذج
+        document.getElementById('service-form')?.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            const messageDiv = document.getElementById('form-message');
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    messageDiv.textContent = 'تم إرسال طلبك بنجاح! سنتواصل معك قريباً.';
+                    messageDiv.className = 'form-message success';
+                    form.reset();
+                } else {
+                    throw new Error('فشل في إرسال النموذج');
+                }
+            } catch (error) {
+                messageDiv.textContent = 'حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى لاحقاً.';
+                messageDiv.className = 'form-message error';
+            }
+            
+            // إخفاء الرسالة بعد 5 ثواني
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

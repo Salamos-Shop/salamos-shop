@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج التواصل</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="contact-form-container">
+        <h2>تواصل معنا</h2>
+        <form id="my-form" action="https://formspree.io/f/xzzeogrg" method="POST">
+            <div class="form-group">
+                <label for="name">الاسم الكامل</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">رقم الهاتف</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">الموضوع</label>
+                <select id="subject" name="subject">
+                    <option value="no-thing!">اختر الخدمه</option>
+                    <option value="طلب رسمه">طلب رسمه</option>
+                    <option value="خدمه تصميم موقع">خدمه تصميم موقع الكتروني</option>
+                    <option value="مونتاج فيديو">مونتاج فيديو</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">الرسالة</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">إرسال الرسالة</button>
+            </div>
+            
+            <div id="form-status" class="status-message"></div>
+        </form>
+    </div>
+    
+    <style>
+    .contact-form-container {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 25px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        font-family: 'Tajawal', sans-serif;
+    }
+    
+    .contact-form-container h2 {
+        color: #4169E1;
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 28px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 16px;
+        font-family: 'Tajawal', sans-serif;
+    }
+    
+    .form-group textarea {
+        resize: vertical;
+    }
+    
+    .form-actions {
+        text-align: center;
+        margin-top: 25px;
+    }
+    
+    .submit-btn {
+        background-color: #4169E1;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .submit-btn:hover {
+        background-color: #2a4fc5;
+        transform: translateY(-2px);
+    }
+    
+    .status-message {
+        margin-top: 20px;
+        padding: 12px;
+        border-radius: 5px;
+        text-align: center;
+        display: none;
+    }
+    
+    .status-message.success {
+        background-color: #d4edda;
+        color: #155724;
+        display: block;
+    }
+    
+    .status-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        display: block;
+    }
+    
+    @media (max-width: 768px) {
+        .contact-form-container {
+            padding: 15px;
+            margin: 20px;
+        }
+    }
+    </style>
+    
+    <script>
+    document.getElementById('my-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const form = e.target;
+        const formData = new FormData(form);
+        const statusDiv = document.getElementById('form-status');
+        
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                statusDiv.textContent = 'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.';
+                statusDiv.className = 'status-message success';
+                form.reset();
+            } else {
+                throw new Error('فشل في إرسال النموذج');
+            }
+        } catch (error) {
+            statusDiv.textContent = 'حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً.';
+            statusDiv.className = 'status-message error';
+        }
+        
+        setTimeout(() => {
+            statusDiv.style.display = 'none';
+        }, 5000);
+    });
+    </script>
+</body>
+</html>

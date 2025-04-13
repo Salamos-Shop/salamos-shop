@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات مونتاج الفيديو الاحترافية</title>
+    <style>
+        :root {
+            --primary: #4169E1;
+            --accent: #FFD700;
+            --dark: #0A1F44;
+            --light: #F8F9FF;
+            --radius: 15px;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tahoma', sans-serif;
+        }
+
+        body {
+            background: var(--light);
+            line-height: 1.8;
+            color: var(--dark);
+        }
+
+        /* الترويسة */
+        .header {
+            background: linear-gradient(135deg, var(--primary), #2A4A9C);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* العناصر العامة */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* بطاقات الخدمات */
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .service-card {
+            background: white;
+            flex: 1 1 300px;
+            max-width: 350px;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .service-card li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .service-card li::before {
+            content: "•";
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        /* قسم الأسعار */
+        .pricing-box {
+            background: linear-gradient(45deg, var(--primary), #3B5ABD);
+            color: white;
+            padding: 3rem;
+            border-radius: var(--radius);
+            text-align: center;
+            margin: 4rem 0;
+            box-shadow: 0 15px 40px rgba(65,105,225,0.2);
+        }
+
+        .price {
+            font-size: 3rem;
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .price span {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* زر الإجراء */
+        .cta-button {
+            display: inline-flex;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 1.2rem 3.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255,215,0,0.3);
+            border: none;
+            cursor: pointer;
+            margin: 1rem auto;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255,215,0,0.4);
+        }
+
+        /* نموذج الفيديو */
+        .video-sample {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin: 4rem 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            aspect-ratio: 16/9;
+        }
+
+        .video-sample img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* نموذج الاتصال */
+        .contact-section {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* الرسوم المتحركة */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* التكيف مع الجوال */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .service-card {
+                flex: 1 1 100%;
+            }
+
+            .pricing-box {
+                padding: 2rem;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+
+            .contact-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>احترف مونتاج الفيديو مع أفضل الخدمات</h1>
+            <p>خدمات مونتاج فيديو احترافية للمبدعين والشركات</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="services">
+            <h2>الخدمات المقدمة</h2>
+            <div class="services-container">
+                <article class="service-card">
+                    <h3>المونتاج الأساسي</h3>
+                    <ul>
+                        <li>قص ولصق المشاهد</li>
+                        <li>الانتقالات البسيطة</li>
+                        <li>ضبط مستوى الصوت</li>
+                        <li>جودة 720p</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <h3>المونتاج المتقدم</h3>
+                    <ul>
+                        <li>انتقالات معقدة</li>
+                        <li>تصحيح الألوان</li>
+                        <li>تعديل الصوت الاحترافي</li>
+                        <li>جودة 1080p</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <h3>المونتاج المميز</h3>
+                    <ul>
+                        <li>الرسوم المتحركة</li>
+                        <li>المؤثرات السينمائية</li>
+                        <li>جودة 4K</li>
+                        <li>دعم فوري</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="pricing-box">
+            <h2>باقات الأسعار</h2>
+            <div class="price">49$<span>لكل 10 دقائق</span></div>
+            <p>عروض خاصة للمشاريع طويلة المدى</p>
+            <button class="cta-button">ابدأ مشروعك الآن</button>
+        </section>
+
+        <section class="video-sample">
+            <img src="images/hero-image.jpg" alt="عينة مونتاج فيديو">
+        </section>
+
+        <section class="contact-section">
+            <h2>هل أنت جاهز للبدء؟</h2>
+            <form>
+                <input type="text" placeholder="الاسم بالكامل" required>
+                <input type="email" placeholder="البريد الإلكتروني" required>
+                <textarea placeholder="تفاصيل المشروع" rows="6" required></textarea>
+                <button type="submit" class="cta-button">إرسال الطلب</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
