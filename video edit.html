@@ -404,10 +404,42 @@
                 flex: 1 1 100%;
             }
         }
+        .back-btn {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 16px;
+            margin: 20px;
+            margin-top: 20px;
+        }
+        .back-btn {
+    color: rgba(255, 255, 255, 0.8); /* لون نص شبه شفاف */
+    text-decoration: none;
+    font-size: 16px;
+    margin: 20px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    background-color: rgba(0, 0, 0, 0.2); /* خلفية شبه شفافة */
+    backdrop-filter: blur(4px); /* تأثير ضبابي للدمج */
+}
+
+.back-btn:hover {
+    background-color: rgba(0, 0, 0, 0.4); /* تظليل أقوى عند التمرير */
+    color: white;
+}
+
+
     </style>
 </head>
 <body>
+    
     <header class="header">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-right"></i> العودة للمتجر
+        </a>
         <div class="container">
             <h1>احترف مونتاج الفيديو مع أفضل الخدمات</h1>
             <p>خدمات مونتاج فيديو احترافية للمبدعين والشركات بجودة عالية وسرعة في التنفيذ</p>
