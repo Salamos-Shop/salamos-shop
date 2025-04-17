@@ -280,6 +280,143 @@
             color: white;
         }
         
+        /* قسم باقات الأسعار الجديد */
+        .pricing-section {
+            margin: 60px 0;
+        }
+        
+        .pricing-section h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+            font-size: 28px;
+        }
+        
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 320px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: 15px;
+            left: -30px;
+            background: var(--primary-blue);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(-45deg);
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .card-header {
+            padding: 25px;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa, #e4e8ed);
+        }
+        
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card-icon img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        
+        .service-title {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        
+        .service-desc {
+            color: var(--gray-text);
+            font-size: 14px;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .card-body ul {
+            list-style: none;
+        }
+        
+        .card-body ul li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            color: var(--gray-text);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-body ul li:before {
+            content: "•";
+            color: var(--primary-blue);
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        
+        .card-footer {
+            padding: 20px;
+            text-align: center;
+            background: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        
+        .action-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .action-btn:hover {
+            background: #2a4fc5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(65, 105, 225, 0.3);
+        }
+        
         /* معرض أعمال */
         .portfolio {
             margin: 60px 0;
@@ -515,6 +652,11 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+            
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -529,6 +671,10 @@
             .back-btn {
                 padding: 6px 12px;
                 font-size: 13px;
+            }
+            
+            .service-card {
+                width: 100%;
             }
         }
     </style>
@@ -631,6 +777,88 @@
                         <h3 style="color: var(--primary-blue); margin-bottom: 15px;">هل لديك استفسار؟</h3>
                         <p style="color: var(--gray-text); margin-bottom: 15px;">نحن هنا لمساعدتك في أي استفسار لديك حول خدماتنا.</p>
                         <a href="contact.html" class="btn btn-outline">اتصل بنا</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- قسم باقات الأسعار الجديد -->
+            <div class="pricing-section">
+                <h2>باقات تصميم المواقع لدينا</h2>
+                <div class="pricing-cards">
+                    <!-- بطاقة الخدمة 1 -->
+                    <div class="service-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="تصميم أساسي">
+                            </div>
+                            <h3 class="service-title">التصميم الأساسي</h3>
+                            <p class="service-desc">حلول تصميم مواقع للمبتدئين والهواة</p>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>تصميم 5 صفحات رئيسية</li>
+                                <li>تصميم متجاوب مع الأجهزة</li>
+                                <li>نموذج اتصال أساسي</li>
+                                <li>ألوان وخطوط مخصصة</li>
+                                <li>شعار الموقع</li>
+                                <li>دعم فني لمدة شهر</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <span class="price">99$</span>
+                            <button class="action-btn">اختيار الباقة</button>
+                        </div>
+                    </div>
+                    
+                    <!-- بطاقة الخدمة 2 -->
+                    <div class="service-card">
+                        <div class="popular-tag">الأكثر طلباً</div>
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2933/2933245.png" alt="تصميم متقدم">
+                            </div>
+                            <h3 class="service-title">التصميم المتقدم</h3>
+                            <p class="service-desc">حلول متكاملة للشركات والمؤسسات</p>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>تصميم 10 صفحات متكاملة</li>
+                                <li>نظام إدارة محتوى (CMS)</li>
+                                <li>نماذج اتصال متقدمة</li>
+                                <li>تحسين لمحركات البحث</li>
+                                <li>إضافة مدونة للموقع</li>
+                                <li>دعم فني لمدة 3 أشهر</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <span class="price">199$</span>
+                            <button class="action-btn">اختيار الباقة</button>
+                        </div>
+                    </div>
+                    
+                    <!-- بطاقة الخدمة 3 -->
+                    <div class="service-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2620/2620971.png" alt="تصميم مميز">
+                            </div>
+                            <h3 class="service-title">التصميم المميز</h3>
+                            <p class="service-desc">حلول احترافية بأعلى جودة للشركات الكبرى</p>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>تصميم غير محدود الصفحات</li>
+                                <li>متجر إلكتروني متكامل</li>
+                                <li>نظام حجز مواعيد</li>
+                                <li>تحسين متقدم لمحركات البحث</li>
+                                <li>تصميم هوية بصرية كاملة</li>
+                                <li>دعم فني لمدة 6 أشهر</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <span class="price">299$</span>
+                            <button class="action-btn">اختيار الباقة</button>
+                        </div>
                     </div>
                 </div>
             </div>
