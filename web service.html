@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تصميم مواقع الويب - متجرنا الإلكتروني</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #4169E1;
@@ -25,7 +26,7 @@
         }
         
         body {
-            background-color: white;
+            background-color: #f8f9fa;
             color: var(--dark-text);
         }
         
@@ -40,10 +41,10 @@
         .header {
             background-color: white;
             padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
         
         .header .container {
@@ -52,10 +53,36 @@
             align-items: center;
         }
         
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
         .logo {
             font-size: 24px;
             font-weight: bold;
             color: var(--primary-blue);
+        }
+        
+        .back-btn {
+            color: var(--primary-blue);
+            background-color: rgba(65, 105, 225, 0.1);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            border: 1px solid rgba(65, 105, 225, 0.3);
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            background-color: rgba(65, 105, 225, 0.2);
+            transform: translateX(5px);
         }
         
         .nav ul {
@@ -78,27 +105,26 @@
             color: var(--primary-blue);
         }
         
-        .user-actions a {
-            color: var(--dark-text);
-            margin-right: 15px;
-            text-decoration: none;
-        }
-        
         /* محتوى صفحة الخدمة */
         .service-header {
+            background: linear-gradient(135deg, var(--primary-blue), #5a7eff);
+            color: white;
             text-align: center;
-            margin: 40px 0;
+            padding: 60px 20px;
+            margin: 0;
+            border-radius: 0 0 20px 20px;
         }
         
         .service-header h1 {
             font-size: 36px;
-            color: var(--primary-blue);
+            color: white;
             margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .service-header p {
             font-size: 18px;
-            color: var(--gray-text);
+            color: rgba(255,255,255,0.9);
             max-width: 700px;
             margin: 0 auto;
         }
@@ -119,6 +145,14 @@
         
         .service-section {
             margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .service-section.show {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .service-section h2 {
@@ -151,6 +185,12 @@
             padding: 20px;
             margin-bottom: 20px;
             border-left: 4px solid var(--primary-blue);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         .feature-card h3 {
@@ -171,6 +211,12 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border: 1px solid var(--border-color);
             text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         .price {
@@ -214,12 +260,13 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
+            box-shadow: 0 4px 8px rgba(65, 105, 225, 0.2);
         }
         
         .btn:hover {
             background-color: #2a4fc5;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(65, 105, 225, 0.3);
+            box-shadow: 0 6px 15px rgba(65, 105, 225, 0.3);
         }
         
         .btn-outline {
@@ -231,6 +278,143 @@
         .btn-outline:hover {
             background-color: var(--primary-blue);
             color: white;
+        }
+        
+        /* قسم باقات الأسعار الجديد */
+        .pricing-section {
+            margin: 60px 0;
+        }
+        
+        .pricing-section h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+            font-size: 28px;
+        }
+        
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 320px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: 15px;
+            left: -30px;
+            background: var(--primary-blue);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(-45deg);
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .card-header {
+            padding: 25px;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa, #e4e8ed);
+        }
+        
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card-icon img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        
+        .service-title {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        
+        .service-desc {
+            color: var(--gray-text);
+            font-size: 14px;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .card-body ul {
+            list-style: none;
+        }
+        
+        .card-body ul li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            color: var(--gray-text);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-body ul li:before {
+            content: "•";
+            color: var(--primary-blue);
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        
+        .card-footer {
+            padding: 20px;
+            text-align: center;
+            background: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        
+        .action-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .action-btn:hover {
+            background: #2a4fc5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(65, 105, 225, 0.3);
         }
         
         /* معرض أعمال */
@@ -256,6 +440,14 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .portfolio-item.show {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .portfolio-item:hover {
@@ -442,6 +634,11 @@
                 gap: 15px;
             }
             
+            .logo-container {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
             .nav ul {
                 justify-content: center;
                 flex-wrap: wrap;
@@ -455,6 +652,30 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+            
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-header {
+                padding: 40px 15px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .service-card {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -462,7 +683,12 @@
     <!-- شريط التنقل -->
     <header class="header">
         <div class="container">
-            <div class="logo">متجرنا</div>
+            <div class="logo-container">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-right"></i> العودة
+                </a>
+                <div class="logo">متجرنا</div>
+            </div>
             
             <nav class="nav">
                 <ul>
@@ -473,18 +699,20 @@
                     <li><a href="contact.html">اتصل بنا</a></li>
                 </ul>
             </nav>
-            
         </div>
     </header>
 
     <!-- محتوى صفحة الخدمة -->
     <main>
-        <div class="container">
-            <div class="service-header">
+        <div class="service-header">
+            <div class="container">
                 <h1>تصميم مواقع الويب الاحترافية</h1>
                 <p>نقدم حلولاً متكاملة لتصميم وتطوير مواقع الويب التي تلبي احتياجات عملك وتبرز هويتك في العالم الرقمي</p>
             </div>
-            
+        </div>
+        
+        
+        <div class="container">
             <div class="service-content">
                 <div class="service-details">
                     <div class="service-section">
@@ -550,6 +778,88 @@
                         <h3 style="color: var(--primary-blue); margin-bottom: 15px;">هل لديك استفسار؟</h3>
                         <p style="color: var(--gray-text); margin-bottom: 15px;">نحن هنا لمساعدتك في أي استفسار لديك حول خدماتنا.</p>
                         <a href="contact.html" class="btn btn-outline">اتصل بنا</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- قسم باقات الأسعار الجديد -->
+            <div class="pricing-section">
+                <h2>باقات تصميم المواقع لدينا</h2>
+                <div class="pricing-cards">
+                    <!-- بطاقة الخدمة 1 -->
+                    <div class="service-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="تصميم أساسي">
+                            </div>
+                            <h3 class="service-title">التصميم الأساسي</h3>
+                            <p class="service-desc">حلول تصميم مواقع للمبتدئين والهواة</p>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>تصميم 5 صفحات رئيسية</li>
+                                <li>تصميم متجاوب مع الأجهزة</li>
+                                <li>نموذج اتصال أساسي</li>
+                                <li>ألوان وخطوط مخصصة</li>
+                                <li>شعار الموقع</li>
+                                <li>دعم فني لمدة شهر</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <span class="price">99$</span>
+                            <button class="action-btn">اختيار الباقة</button>
+                        </div>
+                    </div>
+                    
+                    <!-- بطاقة الخدمة 2 -->
+                    <div class="service-card">
+                        <div class="popular-tag">الأكثر طلباً</div>
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2933/2933245.png" alt="تصميم متقدم">
+                            </div>
+                            <h3 class="service-title">التصميم المتقدم</h3>
+                            <p class="service-desc">حلول متكاملة للشركات والمؤسسات</p>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>تصميم 10 صفحات متكاملة</li>
+                                <li>نظام إدارة محتوى (CMS)</li>
+                                <li>نماذج اتصال متقدمة</li>
+                                <li>تحسين لمحركات البحث</li>
+                                <li>إضافة مدونة للموقع</li>
+                                <li>دعم فني لمدة 3 أشهر</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <span class="price">199$</span>
+                            <button class="action-btn">اختيار الباقة</button>
+                        </div>
+                    </div>
+                    
+                    <!-- بطاقة الخدمة 3 -->
+                    <div class="service-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2620/2620971.png" alt="تصميم مميز">
+                            </div>
+                            <h3 class="service-title">التصميم المميز</h3>
+                            <p class="service-desc">حلول احترافية بأعلى جودة للشركات الكبرى</p>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>تصميم غير محدود الصفحات</li>
+                                <li>متجر إلكتروني متكامل</li>
+                                <li>نظام حجز مواعيد</li>
+                                <li>تحسين متقدم لمحركات البحث</li>
+                                <li>تصميم هوية بصرية كاملة</li>
+                                <li>دعم فني لمدة 6 أشهر</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <span class="price">299$</span>
+                            <button class="action-btn">اختيار الباقة</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -620,7 +930,7 @@
                         <li><i class="fas fa-phone"></i> +966 12 345 6789</li>
                     </ul>
                 </div>
-                
+            </div>
             
             <div class="copyright">
                 <p>&copy; 2023 متجرنا الإلكتروني. جميع الحقوق محفوظة.</p>
@@ -630,38 +940,56 @@
 
     <script>
         // معالجة إرسال النموذج
-        document.getElementById('service-form')?.addEventListener('submit', async function(e) {
-            e.preventDefault();
+        document.addEventListener('DOMContentLoaded', function() {
+            // تأثير الظهور التدريجي
+            const sections = document.querySelectorAll('.service-section, .portfolio-item');
             
-            const form = e.target;
-            const formData = new FormData(form);
-            const messageDiv = document.getElementById('form-message');
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
                     }
                 });
-                
-                if (response.ok) {
-                    messageDiv.textContent = 'تم إرسال طلبك بنجاح! سنتواصل معك قريباً.';
-                    messageDiv.className = 'form-message success';
-                    form.reset();
-                } else {
-                    throw new Error('فشل في إرسال النموذج');
-                }
-            } catch (error) {
-                messageDiv.textContent = 'حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى لاحقاً.';
-                messageDiv.className = 'form-message error';
-            }
+            }, {threshold: 0.1});
             
-            // إخفاء الرسالة بعد 5 ثواني
-            setTimeout(() => {
-                messageDiv.style.display = 'none';
-            }, 5000);
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // معالجة إرسال النموذج
+            document.getElementById('service-form')?.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const form = e.target;
+                const formData = new FormData(form);
+                const messageDiv = document.getElementById('form-message');
+                
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        messageDiv.textContent = 'تم إرسال طلبك بنجاح! سنتواصل معك قريباً.';
+                        messageDiv.className = 'form-message success';
+                        form.reset();
+                    } else {
+                        throw new Error('فشل في إرسال النموذج');
+                    }
+                } catch (error) {
+                    messageDiv.textContent = 'حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى لاحقاً.';
+                    messageDiv.className = 'form-message error';
+                }
+                
+                // إخفاء الرسالة بعد 5 ثواني
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            });
         });
     </script>
 </body>

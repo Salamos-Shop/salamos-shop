@@ -4,150 +4,443 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نموذج التواصل</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --secondary: #3f37c9;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --error: #f72585;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(67, 97, 238, 0.2);
+            z-index: 100;
+            font-size: 16px;
+        }
+
+        .back-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            display: flex;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .form-container:hover {
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .form-decoration {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: none;
+            padding: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .decoration-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-decoration::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .form-decoration::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .form-decoration h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .form-decoration p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            font-size: 1rem;
+        }
+
+        .form-content {
+            flex: 1;
+            padding: 40px;
+            position: relative;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-header h2 {
+            color: var(--dark);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .form-header p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: #f8f9fa;
+            color: var(--dark);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(to right, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            border-radius: var(--border-radius);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-light) 0%, var(--primary) 100%);
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .submit-btn:hover::before {
+            left: 0;
+        }
+
+        .submit-btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .status-message {
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .status-message.success {
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--success);
+            display: block;
+            border: 1px solid var(--success);
+        }
+
+        .status-message.error {
+            background-color: rgba(247, 37, 133, 0.1);
+            color: var(--error);
+            display: block;
+            border: 1px solid var(--error);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @media (min-width: 992px) {
+            .form-decoration {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-content {
+                padding: 30px;
+            }
+            
+            .form-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .back-btn {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-content {
+                padding: 25px 20px;
+            }
+            
+            .form-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .form-control {
+                padding: 12px 15px;
+            }
+            
+            .submit-btn {
+                padding: 14px;
+                font-size: 1rem;
+            }
+            
+            .back-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+                top: 15px;
+                left: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="contact-form-container">
-        <h2>تواصل معنا</h2>
-        <form id="my-form" action="https://formspree.io/f/xzzeogrg" method="POST">
-            <div class="form-group">
-                <label for="name">الاسم الكامل</label>
-                <input type="text" id="name" name="name" required>
+    <a href="index.html" class="back-btn">
+        <span>←</span> العودة للرئيسية
+    </a>
+
+    <div class="form-container floating">
+        <div class="form-decoration">
+            <div class="decoration-content">
+                <h2>تواصل معنا</h2>
+                <p>يسعدنا تلقي استفساراتكم واقتراحاتكم. فريقنا متاح للرد على جميع أسئلتكم خلال 24 ساعة.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            📧
+                        </div>
+                        <div>info@example.com</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            📱
+                        </div>
+                        <div>+966 12 345 6789</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            🏢
+                        </div>
+                        <div>الرياض، المملكة العربية السعودية</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-content">
+            <div class="form-header">
+                <h2>أرسل رسالتك</h2>
+                <p>املأ النموذج وسنعاود الاتصال بك في أقرب وقت ممكن</p>
             </div>
             
-            <div class="form-group">
-                <label for="email">البريد الإلكتروني</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+            <form id="contact-form" action="https://formspree.io/f/xzzeogrg" method="POST">
+                <div class="form-group">
+                    <label for="name" class="form-label">الاسم الكامل</label>
+                    <input type="text" id="name" name="name" class="form-control" required placeholder="أدخل اسمك الكامل">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">البريد الإلكتروني</label>
+                    <input type="email" id="email" name="email" class="form-control" required placeholder="أدخل بريدك الإلكتروني">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">رقم الهاتف</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="أدخل رقم هاتفك (اختياري)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject" class="form-label">الموضوع</label>
+                    <select id="subject" name="subject" class="form-control">
+                        <option value="no-thing!">اختر الخدمة</option>
+                        <option value="طلب رسمه">طلب رسمة</option>
+                        <option value="خدمه تصميم موقع">خدمة تصميم موقع إلكتروني</option>
+                        <option value="مونتاج فيديو">مونتاج فيديو</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label">الرسالة</label>
+                    <textarea id="message" name="message" class="form-control" required placeholder="أدخل رسالتك هنا..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span>إرسال الرسالة</span>
+                </button>
+                
+                <div id="form-status" class="status-message"></div>
+            </form>
             
-            <div class="form-group">
-                <label for="phone">رقم الهاتف</label>
-                <input type="tel" id="phone" name="phone">
+            <div class="form-footer">
+                جميع الحقوق محفوظة &copy; 2023
             </div>
-            
-            <div class="form-group">
-                <label for="subject">الموضوع</label>
-                <select id="subject" name="subject">
-                    <option value="no-thing!">اختر الخدمه</option>
-                    <option value="طلب رسمه">طلب رسمه</option>
-                    <option value="خدمه تصميم موقع">خدمه تصميم موقع الكتروني</option>
-                    <option value="مونتاج فيديو">مونتاج فيديو</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="message">الرسالة</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            
-            <div class="form-actions">
-                <button type="submit" class="submit-btn">إرسال الرسالة</button>
-            </div>
-            
-            <div id="form-status" class="status-message"></div>
-        </form>
+        </div>
     </div>
     
-    <style>
-    .contact-form-container {
-        max-width: 600px;
-        margin: 30px auto;
-        padding: 25px;
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        font-family: 'Tajawal', sans-serif;
-    }
-    
-    .contact-form-container h2 {
-        color: #4169E1;
-        text-align: center;
-        margin-bottom: 25px;
-        font-size: 28px;
-    }
-    
-    .form-group {
-        margin-bottom: 20px;
-    }
-    
-    .form-group label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 600;
-        color: #333;
-    }
-    
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        font-size: 16px;
-        font-family: 'Tajawal', sans-serif;
-    }
-    
-    .form-group textarea {
-        resize: vertical;
-    }
-    
-    .form-actions {
-        text-align: center;
-        margin-top: 25px;
-    }
-    
-    .submit-btn {
-        background-color: #4169E1;
-        color: white;
-        border: none;
-        padding: 12px 30px;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    
-    .submit-btn:hover {
-        background-color: #2a4fc5;
-        transform: translateY(-2px);
-    }
-    
-    .status-message {
-        margin-top: 20px;
-        padding: 12px;
-        border-radius: 5px;
-        text-align: center;
-        display: none;
-    }
-    
-    .status-message.success {
-        background-color: #d4edda;
-        color: #155724;
-        display: block;
-    }
-    
-    .status-message.error {
-        background-color: #f8d7da;
-        color: #721c24;
-        display: block;
-    }
-    
-    @media (max-width: 768px) {
-        .contact-form-container {
-            padding: 15px;
-            margin: 20px;
-        }
-    }
-    </style>
-    
     <script>
-    document.getElementById('my-form').addEventListener('submit', async function(e) {
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
         e.preventDefault();
         
         const form = e.target;
         const formData = new FormData(form);
         const statusDiv = document.getElementById('form-status');
+        const submitBtn = form.querySelector('.submit-btn');
+        
+        // تغيير حالة الزر أثناء الإرسال
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>جاري الإرسال...</span>';
         
         try {
             const response = await fetch(form.action, {
@@ -168,8 +461,13 @@
         } catch (error) {
             statusDiv.textContent = 'حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً.';
             statusDiv.className = 'status-message error';
+        } finally {
+            // إعادة حالة الزر إلى وضعها الطبيعي
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>إرسال الرسالة</span>';
         }
         
+        // إخفاء الرسالة بعد 5 ثواني
         setTimeout(() => {
             statusDiv.style.display = 'none';
         }, 5000);

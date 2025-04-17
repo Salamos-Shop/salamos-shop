@@ -295,13 +295,38 @@
         }
 
         .back-btn {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-size: 16px;
-            margin: 20px;
-            margin-top: 20px;
-        }
+    display: inline-block;
+    background-color: #4169E1; /* Royal Blue */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    margin: 15px;
+    direction: rtl;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #365acd; /* أزرق أغمق عند التحويم */
+    transform: translateY(-3px);
+}
+
+.back-btn:hover i {
+    transform: translateX(-5px); /* حركة بسيطة للسهم */
+}
+
+
     </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
 
