@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد ممدوح | استشاري ذكاء صناعي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3A4F7A;
+            --secondary: #4B6587;
+            --accent: #FF9E00;
+            --light: #F8F5F1;
+            --dark: #1A1A2E;
+            --success: #28A745;
+            --radius: 12px;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        /* الترويسة */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 6rem 2rem 8rem;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: 30px 30px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent);
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* القسم الرئيسي */
+        .container {
+            max-width: 1200px;
+            margin: -4rem auto 0;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* بطاقات الخبرات */
+        .experience-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .exp-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+
+        .exp-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .exp-company {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .exp-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .exp-description {
+            margin-top: 1rem;
+        }
+
+        /* المهارات */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill {
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .skill i {
+            color: var(--accent);
+        }
+
+        /* المشاريع */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .project-description {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-tag {
+            background: #f0f0f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* الإنجازات */
+        .achievements {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: var(--radius);
+            margin: 4rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .achievements h2 {
+            color: white;
+        }
+
+        .achievements h2::after {
+            background: var(--accent);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .achievement-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* الاتصال */
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(58, 79, 122, 0.2);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* التذييل */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* الرسوم المتحركة */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* التكيف مع الجوال */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .experience-cards, .projects-grid, .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero-content">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="محمد ممدوح" class="profile-img">
+            <h1>محمد ممدوح</h1>
+            <p class="tagline">استشاري ذكاء صناعي | 6 سنوات من الخبرة</p>
+            <p>أحول الأفكار إلى حلول ذكية باستخدام أحدث تقنيات الذكاء الاصطناعي والتعلم الآلي</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="about">
+            <h2>نبذة عني</h2>
+            <div class="about-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p>أنا محمد ممدوح، استشاري ذكاء صناعي مع أكثر من 6 سنوات من الخبرة في تصميم وتنفيذ حلول الذكاء الاصطناعي للشركات والمؤسسات. تخصصت في تطوير أنظمة التعلم العميق ومعالجة اللغات الطبيعية، وأعمل على مساعدة الشركات في تحويل بياناتها إلى قرارات ذكية.</p>
+                <p>حاصل على ماجستير في علوم الحاسب من جامعة القاهرة، ودورات متخصصة في الذكاء الاصطناعي من معهد ماساتشوستس للتكنولوجيا وجامعة ستانفورد.</p>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>الخبرات العملية</h2>
+            <div class="experience-cards">
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <div class="exp-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h3 class="exp-title">رئيس قسم الذكاء الاصطناعي</h3>
+                            <p class="exp-company">شركة تكنولوجيا المستقبل</p>
+                            <p class="exp-date">2020 - الحاضر</p>
+                        </div>
+                    </div>
+                    <div class="exp-description">
+                        <p>قيادة فريق مكون من 15 مهندسًا لتطوير أنظمة الذكاء الاصطناعي للشركة. تصميم وتنفيذ نماذج التعلم العميق لتحليل البيانات الضخمة واتخاذ القرارات.</p>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <div class="exp-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <h3 class="exp-title">خبير تعلم آلي</h3>
+                            <p class="exp-company">مركز الابتكار الرقمي</p>
+                            <p class="exp-date">2018 - 2020</p>
+                        </div>
+                    </div>
+                    <div class="exp-description">
+                        <p>تطوير نماذج تنبؤية للقطاع الصحي باستخدام خوارزميات التعلم الآلي. تدريب أكثر من 200 متخصص على أساسيات الذكاء الاصطناعي وتطبيقاته.</p>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <div class="exp-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="exp-title">مهندس بيانات</h3>
+                            <p class="exp-company">بنك القاهرة الدولي</p>
+                            <p class="exp-date">2016 - 2018</p>
+                        </div>
+                    </div>
+                    <div class="exp-description">
+                        <p>بناء أنظمة لتحليل البيانات المالية واكتشاف الأنماط الاحتيالية. تطوير خوارزميات لتقييم المخاطر الائتمانية باستخدام التعلم الآلي.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>المهارات التقنية</h2>
+            <div class="skills-container">
+                <div class="skill">
+                    <i class="fab fa-python"></i> Python
+                </div>
+                <div class="skill">
+                    <i class="fas fa-project-diagram"></i> TensorFlow
+                </div>
+                <div class="skill">
+                    <i class="fas fa-network-wired"></i> Neural Networks
+                </div>
+                <div class="skill">
+                    <i class="fas fa-language"></i> NLP
+                </div>
+                <div class="skill">
+                    <i class="fas fa-eye"></i> Computer Vision
+                </div>
+                <div class="skill">
+                    <i class="fas fa-database"></i> Big Data
+                </div>
+                <div class="skill">
+                    <i class="fas fa-cloud"></i> Cloud AI
+                </div>
+                <div class="skill">
+                    <i class="fas fa-chart-bar"></i> Data Analysis
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>أبرز المشاريع</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://source.unsplash.com/random/600x400/?ai,technology" alt="نظام التشخيص الطبي" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-title">نظام التشخيص الطبي بالذكاء الاصطناعي</h3>
+                        <p class="project-description">نظام يستخدم التعلم العميق لتحليل الصور الطبية وتشخيص الأمراض بدقة تصل إلى 94%.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Deep Learning</span>
+                            <span class="project-tag">Healthcare</span>
+                            <span class="project-tag">Computer Vision</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://source.unsplash.com/random/600x400/?chatbot,ai" alt="مساعد افتراضي" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-title">المساعد الافتراضي العربي</h3>
+                        <p class="project-description">مساعد ذكي يفهم اللهجات العربية المختلفة ويقدم إجابات دقيقة باستخدام معالجة اللغات الطبيعية.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">NLP</span>
+                            <span class="project-tag">Arabic</span>
+                            <span class="project-tag">Chatbot</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://source.unsplash.com/random/600x400/?finance,data" alt="تحليل المخاطر" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-title">نظام تحليل المخاطر المالية</h3>
+                        <p class="project-description">منصة تستخدم خوارزميات التعلم الآلي للتنبؤ بالمخاطر المالية وتقييم الجدارة الائتمانية.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Finance</span>
+                            <span class="project-tag">Predictive Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="achievements">
+            <h2>إنجازاتي</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="achievement-number">12+</div>
+                    <div class="achievement-title">مشروع ناجح</div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="achievement-number">50+</div>
+                    <div class="achievement-title">عميل راضٍ</div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="achievement-number">8</div>
+                    <div class="achievement-title">شهادات احترافية</div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="achievement-number">5</div>
+                    <div class="achievement-title">براءات اختراع</div>
+                </div>
+            </div>
+        </div>
+
+        <section id="contact">
+            <h2>تواصل معي</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">الاسم</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">الموضوع</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">الرسالة</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">إرسال الرسالة</button>
+                </form>
+            </div>
+        </section>
+    </main>
+<a href="images/hero-image.jpg" download="hero-image">download a photo</a>
+    <footer>
+        <div class="footer-logo">م.م</div>
+        <p>محمد ممدوح - استشاري ذكاء صناعي</p>
+        <div class="footer-links">
+            <a href="#about">نبذة عني</a>
+            <a href="#experience">الخبرات</a>
+            <a href="#projects">المشاريع</a>
+            <a href="#contact">تواصل</a>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="copyright">© 2023 جميع الحقوق محفوظة</p>
+    </footer>
+</body>
+</html>
