@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حزم تصميم المواقع</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4169E1;
+            margin-bottom: 3rem;
+        }
+
+        .packages-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .package {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .package:hover {
+            transform: translateY(-10px);
+        }
+
+        .package-header {
+            border-bottom: 2px solid #87CEEB;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-title {
+            color: #4169E1;
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .package-price {
+            color: #87CEEB;
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .package-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            background: #4169E1;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #2a4a9e;
+        }
+
+        @media (max-width: 768px) {
+            .packages-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        #main-pac{
+            color: gold ;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>حزم تصميم المواقع الإلكترونية</h1>
+        
+        <div class="packages-container">
+            <!-- الحزمة الأساسية -->
+            <div class="package">
+                <div class="package-header">
+                    <h2 class="package-title">الحزمة الأساسية</h2>
+                    <div class="package-price" id="main-pac">49.9 درهم</div>
+                </div>
+                <ul class="package-features">
+                    <li>تصميم 5 صفحات رئيسية</li>
+                    <li>استضافة مجانية لمدة 6 أشهر</li>
+                    <li>شهادة SSL مجانية</li>
+                    <li>نموذج اتصال أساسي</li>
+                    <li>دعم فني لمدة شهر</li>
+                </ul>
+                <a href="#" class="btn">اختر هذه الحزمة</a>
+            </div>
+
+            <!-- الحزمة المتقدمة -->
+            <div class="package">
+                <div class="package-header">
+                    <h2 class="package-title">الحزمة المتقدمة</h2>
+                    <div class="package-price">5,000 درهم</div>
+                </div>
+                <ul class="package-features">
+                    <li>كل مميزات الحزمة الأساسية</li>
+                    <li>تصميم متجاوب لجميع الأجهزة</li>
+                    <li>نظام إدارة محتوى (CMS)</li>
+                    <li>تحسين SEO أساسي</li>
+                    <li>دعم فني لمدة 3 أشهر</li>
+                </ul>
+                <a href="#" class="btn">اختر هذه الحزمة</a>
+            </div>
+
+            <!-- الحزمة المميزة -->
+            <div class="package">
+                <div class="package-header">
+                    <h2 class="package-title">الحزمة المميزة</h2>
+                    <div class="package-price">10,000 درهم</div>
+                </div>
+                <ul class="package-features">
+                    <li>كل مميزات الحزمة المتقدمة</li>
+                    <li>تصميم خاص حسب الطلب</li>
+                    <li>متجر إلكتروني متكامل</li>
+                    <li>تحسين SEO متقدم</li>
+                    <li>دعم فني لمدة سنة</li>
+                    <li>أولوية في الخدمة</li>
+                </ul>
+                <a href="#" class="btn">اختر هذه الحزمة</a>
+            </div>
+
+
+            <div class="package">
+                <div class="package-header">
+                    <h2 class="package-title">حزمه متجر الكتروني</h2>
+                    <div class="package-price">49.9 درهم</div>
+                </div>
+                <ul class="package-features">
+                    <li>تصميم 5 صفحات رئيسية</li>
+                    <li>استضافة مجانية لمدة 6 أشهر</li>
+                    <li>شهادة SSL مجانية</li>
+                    <li>نموذج اتصال أساسي</li>
+                    <li>دعم فني لمدة شهر</li>
+                </ul>
+                <a href="#" class="btn">اختر هذه الحزمة</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
