@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="google" content="notranslate">
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {pageLanguage: 'ar'}, 
+      'google_translate_element'
+    );
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <style>
         /* إضافات جديدة للـ Nav Bar فقط */
         .header .container {
@@ -63,6 +74,41 @@
                 color: #000000;
             }
         }
+
+
+  #google_translate_element {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 5px 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .goog-te-banner-frame.skiptranslate,
+  .goog-te-gadget-icon {
+    display: none !important;
+  }
+
+  body {
+    top: 0px !important; 
+  }
+
+  .goog-te-gadget {
+    font-size: 14px;
+    font-family: 'Cairo', sans-serif;
+    color: #333;
+  }
+
+  .goog-te-combo {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+
     </style>
 </head>
 <body>
@@ -73,9 +119,6 @@
                 <img src="images/logo.png" alt="شعار المتجر" class="logo-img">
             </div>
             
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
             
             <nav class="nav" id="mainNav">
                 <ul>
@@ -88,6 +131,8 @@
             </nav>
         </div>
     </header>
+
+
 
     <!-- باقي المحتوى كما هو -->
     <section id="home" class="hero-section">

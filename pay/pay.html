@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شراء خدمة المونتاج - الخطة الأساسية</title>
+
+    <!-- PayPal Live SDK -->
+    <script 
+        src="https://www.paypal.com/sdk/js?client-id=BAApsP79v25TmLNlzT3a-DJADvzzdoy85IQ0cQ9pNtPGt5GjqDhFPdiM8DRNpOI7Ro-WdS-zSGxQMbUV4c&components=hosted-buttons&disable-funding=venmo&currency=USD">
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #f8f9fa;
+            --accent-color: #3949ab;
+            --text-color: #1a237e;
+            --border-color: #e1e1e1;
+            --success-color: #1b5e20;
+            --gradient-primary: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+            --gradient-accent: linear-gradient(135deg, #3949ab 0%, #5c6bc0 100%);
+            --light-blue: #e8eaf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light-blue);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(26, 35, 126, 0.15);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.1)"/></svg>') center/50px 50px repeat;
+            opacity: 0.1;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .plan-details {
+            background: var(--light-blue);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-details::before {
+            content: '✨';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 100px;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+
+        .plan-details h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .plan-details h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+        }
+
+        .features {
+            list-style: none;
+            margin: 1.5rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .features li {
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.08);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .features li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .features li:before {
+            content: "✓";
+            color: var(--success-color);
+            margin-left: 1rem;
+            font-weight: bold;
+            font-size: 1.4rem;
+            background: var(--light-blue);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .price-container {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(26, 35, 126, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .price-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-accent);
+        }
+
+        .price {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 1rem 0;
+            text-shadow: 2px 2px 4px rgba(26, 35, 126, 0.1);
+        }
+
+        .price-label {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            font-weight: bold;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(26, 35, 126, 0.1);
+            border: 1px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .input-container {
+            position: relative;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .input-container input[type="text"],
+        .input-container input[type="email"],
+        .input-container input[type="tel"],
+        .input-container textarea {
+            font-size: 20px;
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid var(--light-blue);
+            padding: 5px 0;
+            background-color: transparent;
+            outline: none;
+            color: var(--text-color);
+        }
+
+        .input-container textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .input-container .label {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: #999;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            font-size: 18px;
+        }
+
+        .input-container input[type="text"]:focus ~ .label,
+        .input-container input[type="text"]:valid ~ .label,
+        .input-container input[type="email"]:focus ~ .label,
+        .input-container input[type="email"]:valid ~ .label,
+        .input-container input[type="tel"]:focus ~ .label,
+        .input-container input[type="tel"]:valid ~ .label,
+        .input-container textarea:focus ~ .label,
+        .input-container textarea:valid ~ .label {
+            top: -20px;
+            font-size: 16px;
+            color: var(--accent-color);
+        }
+
+        .input-container .underline {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: 2px;
+            width: 100%;
+            background-color: var(--accent-color);
+            transform: scaleX(0);
+            transition: all 0.3s ease;
+        }
+
+        .input-container input[type="text"]:focus ~ .underline,
+        .input-container input[type="text"]:valid ~ .underline,
+        .input-container input[type="email"]:focus ~ .underline,
+        .input-container input[type="email"]:valid ~ .underline,
+        .input-container input[type="tel"]:focus ~ .underline,
+        .input-container input[type="tel"]:valid ~ .underline,
+        .input-container textarea:focus ~ .underline,
+        .input-container textarea:valid ~ .underline {
+            transform: scaleX(1);
+        }
+
+        .required .label::after {
+            content: " *";
+            color: var(--accent-color);
+        }
+
+        .payment-section {
+            display: none;
+            margin-top: 2rem;
+            text-align: center;
+            padding: 2rem;
+            background: var(--light-blue);
+            border-radius: 15px;
+            border: 1px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .payment-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .submit-btn {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(57, 73, 171, 0.3);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .secure-checkout {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .secure-checkout::before {
+            content: "🔒";
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem auto;
+            }
+
+            .header {
+                padding: 2rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+
+            .input-container {
+                margin: 15px 0;
+            }
+
+            .input-container input[type="text"],
+            .input-container input[type="email"],
+            .input-container input[type="tel"],
+            .input-container textarea {
+                font-size: 16px;
+            }
+
+            .input-container .label {
+                font-size: 16px;
+            }
+
+            .input-container input[type="text"]:focus ~ .label,
+            .input-container input[type="text"]:valid ~ .label,
+            .input-container input[type="email"]:focus ~ .label,
+            .input-container input[type="email"]:valid ~ .label,
+            .input-container input[type="tel"]:focus ~ .label,
+            .input-container input[type="tel"]:valid ~ .label,
+            .input-container textarea:focus ~ .label,
+            .input-container textarea:valid ~ .label {
+                font-size: 14px;
+                top: -18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>خدمة المونتاج الاحترافية</h1>
+                <p>الخطة الأساسية - احصل على مونتاج فيديو احترافي</p>
+            </div>
+
+            <div class="content">
+                <div class="plan-details">
+                    <h2>مميزات الخطة الأساسية</h2>
+                    <ul class="features">
+                        <li>قص ولصق المشاهد باحترافية</li>
+                        <li>الانتقالات البسيطة والأنيقة</li>
+                        <li>ضبط مستوى الصوت وتنقيته</li>
+                        <li>جودة تصوير 720p</li>
+                        <li>إضافة شعار أو نص</li>
+                        <li>تنسيقات متعددة للتصدير</li>
+                    </ul>
+                </div>
+
+                <div class="price-container">
+                    <div class="price-label">السعر النهائي</div>
+                    <div class="price">$39.99</div>
+                    <div class="price-label">USD</div>
+                </div>
+
+                <div class="form-container">
+                    <form id="payment-form">
+                        <div class="form-group">
+                            <div class="input-container">
+                                <input type="text" name="name" required>
+                                <label class="label">الاسم الكامل</label>
+                                <span class="underline"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-container">
+                                <input type="email" name="email" required>
+                                <label class="label">البريد الإلكتروني</label>
+                                <span class="underline"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-container">
+                                <input type="tel" name="phone" required>
+                                <label class="label">رقم الهاتف</label>
+                                <span class="underline"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-container">
+                                <textarea name="details" rows="4"></textarea>
+                                <label class="label">تفاصيل إضافية (اختياري)</label>
+                                <span class="underline"></span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">تأكيد البيانات</button>
+                    </form>
+
+                    <div class="payment-section" id="payment-section">
+                        <div id="paypal-container-6HQSNFWTVR726"></div>
+                        <div class="secure-checkout">
+                            الدفع آمن ومشفر 100%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize PayPal button
+        paypal.HostedButtons({
+            hostedButtonId: "6HQSNFWTVR726",
+        }).render("#paypal-container-6HQSNFWTVR726");
+
+        document.getElementById('payment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('.submit-btn');
+            
+            if (this.checkValidity()) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'جاري الإرسال...';
+
+                fetch('https://formspree.io/f/xyzervrn', {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Disable all form inputs
+                        const formInputs = this.querySelectorAll('input, textarea');
+                        formInputs.forEach(input => input.disabled = true);
+                        
+                        // Show payment section
+                        document.getElementById('payment-section').classList.add('active');
+                        
+                        alert('تم إرسال بياناتك بنجاح! يمكنك الآن إكمال عملية الدفع.');
+                    } else {
+                        throw new Error('فشل في إرسال البيانات');
+                    }
+                })
+                .catch(error => {
+                    console.error('Form submission error:', error);
+                    alert('حدث خطأ أثناء إرسال البيانات: ' + error.message);
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'تأكيد البيانات';
+                });
+            } else {
+                alert('الرجاء تعبئة جميع الحقول المطلوبة بشكل صحيح');
+            }
+        });
+    </script>
+</body>
+</html>

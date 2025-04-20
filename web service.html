@@ -8,8 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sky-blue: 	#4361ee;
-            --royal-blue: 	#3a0ca3;
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary-blue: #87CEEB;
             --light-bg: #F7F9FC;
             --dark-text: #333333;
             --gray-text: #666666;
@@ -62,12 +63,12 @@
         .logo {
             font-size: 24px;
             font-weight: bold;
-            color: var(--primary-blue);
+            color: var(--primary);
         }
         
         .back-btn {
-            color: var(--primary-blue);
-            background-color: rgba(65, 105, 225, 0.1);
+            color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.1);
             text-decoration: none;
             font-size: 14px;
             padding: 8px 15px;
@@ -76,12 +77,12 @@
             align-items: center;
             gap: 8px;
             transition: all 0.3s;
-            border: 1px solid rgba(65, 105, 225, 0.3);
+            border: 1px solid rgba(67, 97, 238, 0.3);
             font-weight: 500;
         }
         
         .back-btn:hover {
-            background-color: rgba(65, 105, 225, 0.2);
+            background-color: rgba(67, 97, 238, 0.2);
             transform: translateX(5px);
         }
         
@@ -102,12 +103,12 @@
         }
         
         .nav ul li a:hover {
-            color: var(--primary-blue);
+            color: var(--primary);
         }
         
         /* محتوى صفحة الخدمة */
         .service-header {
-            background: linear-gradient(135deg, var(--primary-blue), #3a0ca3);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             text-align: center;
             padding: 60px 20px;
@@ -156,7 +157,7 @@
         }
         
         .service-section h2 {
-            color: var(--primary-blue);
+            color: var(--primary);
             margin-bottom: 20px;
             font-size: 24px;
             position: relative;
@@ -170,7 +171,7 @@
             right: 0;
             width: 60px;
             height: 3px;
-            background-color: var(--primary-blue);
+            background-color: var(--primary);
         }
         
         .service-section p {
@@ -184,7 +185,7 @@
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
-            border-left: 4px solid var(--primary-blue);
+            border-left: 4px solid var(--primary);
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
@@ -194,7 +195,7 @@
         }
         
         .feature-card h3 {
-            color: var(--primary-blue);
+            color: var(--primary);
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -222,7 +223,7 @@
         .price {
             font-size: 36px;
             font-weight: bold;
-            color: var(--primary-blue);
+            color: var(--primary);
             margin: 20px 0;
         }
         
@@ -244,13 +245,13 @@
         }
         
         .price-features li i {
-            color: var(--primary-blue);
+            color: var(--primary);
             margin-left: 10px;
         }
         
         .btn {
             display: inline-block;
-            background-color: var(--primary-blue);
+            background-color: var(--primary);
             color: white;
             padding: 12px 30px;
             border-radius: 6px;
@@ -260,23 +261,23 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
-            box-shadow: 0 4px 8px rgba(65, 105, 225, 0.2);
+            box-shadow: 0 4px 8px rgba(67, 97, 238, 0.2);
         }
         
         .btn:hover {
-            background-color: #2a4fc5;
+            background-color: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(65, 105, 225, 0.3);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
         }
         
         .btn-outline {
             background-color: transparent;
-            border: 2px solid var(--primary-blue);
-            color: var(--primary-blue);
+            border: 2px solid var(--primary);
+            color: var(--primary);
         }
         
         .btn-outline:hover {
-            background-color: var(--primary-blue);
+            background-color: var(--primary);
             color: white;
         }
         
@@ -287,7 +288,7 @@
         
         .pricing-section h2 {
             text-align: center;
-            color: var(--primary-blue);
+            color: var(--primary);
             margin-bottom: 40px;
             font-size: 28px;
         }
@@ -318,7 +319,7 @@
             position: absolute;
             top: 15px;
             left: -30px;
-            background: var(--primary-blue);
+            background: var(--primary);
             color: white;
             padding: 5px 40px;
             transform: rotate(-45deg);
@@ -352,7 +353,7 @@
         }
         
         .service-title {
-            color: var(--primary-blue);
+            color: var(--primary);
             margin-bottom: 10px;
             font-size: 22px;
         }
@@ -380,7 +381,7 @@
         
         .card-body ul li:before {
             content: "•";
-            color: var(--primary-blue);
+            color: var(--primary);
             margin-left: 10px;
             font-size: 20px;
         }
@@ -397,11 +398,11 @@
         .price {
             font-size: 24px;
             font-weight: bold;
-            color: var(--primary-blue);
+            color: var(--primary);
         }
         
         .action-btn {
-            background: var(--primary-blue);
+            background: var(--primary);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -412,9 +413,9 @@
         }
         
         .action-btn:hover {
-            background: #2a4fc5;
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(65, 105, 225, 0.3);
+            box-shadow: 0 5px 10px rgba(67, 97, 238, 0.3);
         }
         
         /* معرض أعمال */
@@ -424,7 +425,7 @@
         
         .portfolio h2 {
             text-align: center;
-            color: var(--primary-blue);
+            color: var(--primary);
             margin-bottom: 40px;
             font-size: 28px;
         }
@@ -483,7 +484,7 @@
         }
         
         .contact-form h2 {
-            color: var(--primary-blue);
+            color: var(--primary);
             margin-bottom: 20px;
             text-align: center;
         }
@@ -606,7 +607,7 @@
         }
         
         .social-links a:hover {
-            background-color: var(--primary-blue);
+            background-color: var(--primary);
             transform: translateY(-3px);
         }
         
@@ -693,6 +694,9 @@
             <nav class="nav">
                 <ul>
                     <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="products.html">المنتجات</a></li>
+                    <li><a href="services.html" class="active">الخدمات</a></li>
+                    <li><a href="about.html">عن المتجر</a></li>
                     <li><a href="contact.html">اتصل بنا</a></li>
                 </ul>
             </nav>
@@ -768,11 +772,11 @@
                             <li><i class="fas fa-check"></i>خريطة الموقع</li>
                             <li><i class="fas fa-check"></i>دعم لمدة شهر</li>
                         </ul>
-                        <a href="contact.html" class="btn">اطلب الخدمة الآن</a>
+                        <a href="#pricing-section" class="btn">اطلب الخدمة الآن</a>
                     </div>
                     
                     <div class="contact-card" style="background-color: var(--light-bg); padding: 20px; border-radius: 8px; margin-top: 30px;">
-                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">هل لديك استفسار؟</h3>
+                        <h3 style="color: var(--primary); margin-bottom: 15px;">هل لديك استفسار؟</h3>
                         <p style="color: var(--gray-text); margin-bottom: 15px;">نحن هنا لمساعدتك في أي استفسار لديك حول خدماتنا.</p>
                         <a href="contact.html" class="btn btn-outline">اتصل بنا</a>
                     </div>
@@ -780,7 +784,7 @@
             </div>
             
             <!-- قسم باقات الأسعار الجديد -->
-            <div class="pricing-section">
+            <div class="pricing-section" id="#pricing-section">
                 <h2>باقات تصميم المواقع لدينا</h2>
                 <div class="pricing-cards">
                     <!-- بطاقة الخدمة 1 -->
@@ -804,7 +808,7 @@
                         </div>
                         <div class="card-footer">
                             <span class="price">99$</span>
-                            <button class="action-btn">اختيار الباقة</button>
+                            <a class="action-btn">اختيار الباقة</a>
                         </div>
                     </div>
                     

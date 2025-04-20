@@ -26,7 +26,7 @@
 ## 🧰 الأدوات المستخدمة
 - HTML5
 - CSS3
-- Google Fonts
+- Google Fonts (Reem Kufi)
 - Font Awesome Icons
 - Visual Studio Code
 
