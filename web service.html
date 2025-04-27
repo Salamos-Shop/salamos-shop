@@ -5,679 +5,824 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تصميم مواقع الويب - متجرنا الإلكتروني</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4361ee;
-            --primary-dark: #3a0ca3;
-            --secondary-blue: #87CEEB;
-            --light-bg: #F7F9FC;
-            --dark-text: #333333;
-            --gray-text: #666666;
-            --border-color: #DDDDDD;
-            --success-color: #28a745;
-            --error-color: #dc3545;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            color: var(--dark-text);
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 0;
-        }
-        
-        /* شريط التنقل */
-        .header {
-            background-color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .back-btn {
-            color: var(--primary);
-            background-color: rgba(67, 97, 238, 0.1);
-            text-decoration: none;
-            font-size: 14px;
-            padding: 8px 15px;
-            border-radius: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s;
-            border: 1px solid rgba(67, 97, 238, 0.3);
-            font-weight: 500;
-        }
-        
-        .back-btn:hover {
-            background-color: rgba(67, 97, 238, 0.2);
-            transform: translateX(5px);
-        }
-        
-        .nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav ul li {
-            margin-left: 20px;
-        }
-        
-        .nav ul li a {
-            text-decoration: none;
-            color: var(--dark-text);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav ul li a:hover {
-            color: var(--primary);
-        }
-        
-        /* محتوى صفحة الخدمة */
-        .service-header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-            margin: 0;
-            border-radius: 0 0 20px 20px;
-        }
-        
-        .service-header h1 {
-            font-size: 36px;
-            color: white;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .service-header p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.9);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .service-content {
-            display: flex;
-            gap: 40px;
-            margin: 50px 0;
-        }
-        
-        .service-details {
-            flex: 2;
-        }
-        
-        .service-features {
-            flex: 1;
-        }
-        
-        .service-section {
-            margin-bottom: 40px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s, transform 0.6s;
-        }
-        
-        .service-section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .service-section h2 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 24px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .service-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-        
-        .service-section p {
-            line-height: 1.8;
-            color: var(--gray-text);
-            margin-bottom: 15px;
-        }
-        
-        .feature-card {
-            background-color: var(--light-bg);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--primary);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .feature-card h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .feature-card h3 i {
-            margin-left: 10px;
-        }
-        
-        .pricing-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .price {
-            font-size: 36px;
-            font-weight: bold;
-            color: var(--primary);
-            margin: 20px 0;
-        }
-        
-        .price span {
-            font-size: 16px;
-            color: var(--gray-text);
-        }
-        
-        .price-features {
-            list-style: none;
-            margin: 25px 0;
-        }
-        
-        .price-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-        }
-        
-        .price-features li i {
-            color: var(--primary);
-            margin-left: 10px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            box-shadow: 0 4px 8px rgba(67, 97, 238, 0.2);
-        }
-        
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        /* قسم باقات الأسعار الجديد */
-        .pricing-section {
-            margin: 60px 0;
-        }
-        
-        .pricing-section h2 {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 40px;
-            font-size: 28px;
-        }
-        
-        .pricing-cards {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            width: 320px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .popular-tag {
-            position: absolute;
-            top: 15px;
-            left: -30px;
-            background: var(--primary);
-            color: white;
-            padding: 5px 40px;
-            transform: rotate(-45deg);
-            font-size: 14px;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        
-        .card-header {
-            padding: 25px;
-            text-align: center;
-            background: linear-gradient(135deg, #f5f7fa, #e4e8ed);
-        }
-        
-        .card-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .card-icon img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-        }
-        
-        .service-title {
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-size: 22px;
-        }
-        
-        .service-desc {
-            color: var(--gray-text);
-            font-size: 14px;
-        }
-        
-        .card-body {
-            padding: 20px;
-        }
-        
-        .card-body ul {
-            list-style: none;
-        }
-        
-        .card-body ul li {
-            padding: 8px 0;
-            border-bottom: 1px dashed #eee;
-            color: var(--gray-text);
-            display: flex;
-            align-items: center;
-        }
-        
-        .card-body ul li:before {
-            content: "•";
-            color: var(--primary);
-            margin-left: 10px;
-            font-size: 20px;
-        }
-        
-        .card-footer {
-            padding: 20px;
-            text-align: center;
-            background: #f9f9f9;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .price {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .action-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        
-        .action-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(67, 97, 238, 0.3);
-        }
-        
-        /* معرض أعمال */
-        .portfolio {
-            margin: 60px 0;
-        }
-        
-        .portfolio h2 {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 40px;
-            font-size: 28px;
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .portfolio-item {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s, transform 0.6s;
-        }
-        
-        .portfolio-item.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .portfolio-item-info {
-            padding: 15px;
-            background-color: white;
-        }
-        
-        .portfolio-item-info h3 {
-            margin-bottom: 5px;
-        }
-        
-        .portfolio-item-info p {
-            color: var(--gray-text);
-            font-size: 14px;
-        }
-        
-        /* نموذج الاتصال */
-        .contact-form {
-            background-color: var(--light-bg);
-            padding: 40px;
-            border-radius: 8px;
-            margin: 60px 0;
-        }
-        
-        .contact-form h2 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 16px;
-            font-family: 'Tajawal', Arial, sans-serif;
-        }
-        
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        .form-actions {
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        /* رسائل النموذج */
-        .form-message {
-            display: none;
-            margin: 20px 0;
-            padding: 15px;
-            border-radius: 5px;
-            text-align: center;
-        }
-        
-        .form-message.success {
-            background-color: #d4edda;
-            color: #155724;
-            display: block;
-        }
-        
-        .form-message.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            display: block;
-        }
-        
-        /* تذييل الصفحة */
-        .footer {
-            background-color: var(--dark-text);
-            color: white;
-            padding: 40px 0;
-            margin-top: 60px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 20px;
-            font-size: 18px;
-            color: var(--secondary-blue);
-        }
-        
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .footer-section ul li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .footer-section ul li i {
-            margin-left: 8px;
-            width: 20px;
-            text-align: center;
-        }
-        
-        .footer-section ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-section ul li a:hover {
-            color: white;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .social-links a {
-            color: white;
-            background-color: rgba(255,255,255,0.1);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #aaa;
-            font-size: 14px;
-        }
-        
-        /* تصميم متجاوب */
-        @media (max-width: 768px) {
-            .service-content {
-                flex-direction: column;
-            }
-            
-            .service-header h1 {
-                font-size: 28px;
-            }
-            
-            .header .container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .logo-container {
-                width: 100%;
-                justify-content: space-between;
-            }
-            
-            .nav ul {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            .nav ul li {
-                margin: 0 10px 5px;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .pricing-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+    --primary-color: #1a73e8;
+    --primary-dark: #0d47a1;
+    --accent-color: #fbbc05;
+    --dark-bg: #121212;
+    --darker-bg: #0a0a0a;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #333;
+    --glass-bg: rgba(30, 30, 30, 0.7);
+}
 
-        @media (max-width: 480px) {
-            .service-header {
-                padding: 40px 15px;
-            }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .back-btn {
-                padding: 6px 12px;
-                font-size: 13px;
-            }
-            
-            .service-card {
-                width: 100%;
-            }
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lalezar', cursive;
+    text-decoration: none !important;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* شريط التنقل */
+.header {
+    background-color: var(--darker-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 28px;
+    color: var(--accent-color);
+}
+
+.back-btn {
+    color: var(--accent-color);
+    background-color: rgba(251, 188, 5, 0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    border: 1px solid rgba(251, 188, 5, 0.3);
+}
+
+.back-btn:hover {
+    background-color: rgba(251, 188, 5, 0.2);
+    transform: translateX(5px);
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav ul li {
+    margin-left: 20px;
+}
+
+.nav ul li a {
+    color: var(--text-color);
+    font-size: 18px;
+    transition: color 0.3s;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.nav ul li a:hover,
+.nav ul li a.active {
+    color: var(--accent-color);
+    background-color: rgba(251, 188, 5, 0.1);
+}
+
+/* محتوى صفحة الخدمة */
+.service-header {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.service-header .container {
+    position: relative;
+    z-index: 1;
+}
+
+.service-header h1 {
+    font-size: 42px;
+    color: white;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.service-header p {
+    font-size: 20px;
+    color: rgba(255,255,255,0.9);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.service-content {
+    display: flex;
+    gap: 40px;
+    margin: 50px 0;
+}
+
+.service-details {
+    flex: 2;
+}
+
+.service-features {
+    flex: 1;
+}
+
+.service-section {
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+.service-section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-section h2 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 28px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.service-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.service-section p {
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.service-section ol {
+    padding-right: 20px;
+    color: var(--text-secondary);
+    line-height: 2;
+    font-size: 18px;
+}
+
+.service-section ol li {
+    margin-bottom: 10px;
+}
+
+.feature-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-right: 4px solid var(--primary-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.feature-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+}
+
+.feature-card h3 i {
+    margin-left: 15px;
+    font-size: 24px;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* بطاقات الأسعار */
+.pricing-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.pricing-card h3 {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.price {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin: 20px 0;
+}
+
+.price span {
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.price-features {
+    list-style: none;
+    margin: 25px 0;
+}
+
+.price-features li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+.price-features li i {
+    color: var(--primary-color);
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+    transition: all 0.3s;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.contact-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.contact-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.contact-card p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+/* قسم باقات الأسعار */
+.pricing-section {
+    margin: 80px 0;
+}
+
+.pricing-section h2 {
+    text-align: center;
+    color: var(--accent-color);
+    margin-bottom: 50px;
+    font-size: 36px;
+    position: relative;
+}
+
+.pricing-section h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 15px auto;
+}
+
+.pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.popular-tag {
+    position: absolute;
+    top: 15px;
+    left: -30px;
+    background: var(--accent-color);
+    color: var(--dark-bg);
+    padding: 5px 40px;
+    transform: rotate(-45deg);
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.card-header {
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    position: relative;
+    overflow: hidden;
+}
+
+.card-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+    opacity: 0.1;
+}
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.card-icon img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.service-title {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.service-desc {
+    color: rgba(255,255,255,0.9);
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.card-body ul {
+    list-style: none;
+}
+
+.card-body ul li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border-color);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.card-body ul li:before {
+    content: "•";
+    color: var(--accent-color);
+    margin-left: 10px;
+    font-size: 24px;
+}
+
+.card-footer {
+    padding: 20px;
+    text-align: center;
+    background-color: var(--darker-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.price-small {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.action-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+    border: 2px solid var(--primary-color);
+}
+
+.action-btn:hover {
+    background: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* معرض أعمال */
+.portfolio {
+    margin: 80px 0;
+}
+
+.portfolio h2 {
+    text-align: center;
+    color: var(--accent-color);
+    margin-bottom: 50px;
+    font-size: 36px;
+    position: relative;
+}
+
+.portfolio h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 15px auto;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.portfolio-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.portfolio-item-info {
+    padding: 20px;
+}
+
+.portfolio-item-info h3 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 20px;
+}
+
+.portfolio-item-info p {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+/* تذييل الصفحة */
+.footer {
+    background-color: var(--darker-bg);
+    color: white;
+    padding: 60px 0 30px;
+    margin-top: 80px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    margin-bottom: 25px;
+    font-size: 22px;
+    color: var(--accent-color);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.footer-section p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-section ul li i {
+    margin-left: 10px;
+    color: var(--primary-color);
+}
+
+.footer-section ul li a {
+    color: var(--text-secondary);
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--accent-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: white;
+    background-color: var(--card-bg);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    border: 1px solid var(--border-color);
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+/* تصميم متجاوب */
+@media (max-width: 992px) {
+    .service-content {
+        flex-direction: column;
+    }
+    
+    .service-header h1 {
+        font-size: 36px;
+    }
+    
+    .service-header p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .logo-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .nav ul li {
+        margin: 0 10px 5px;
+    }
+    
+    .service-header h1 {
+        font-size: 32px;
+    }
+    
+    .service-header p {
+        font-size: 16px;
+    }
+    
+    .pricing-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-header {
+        padding: 60px 15px;
+    }
+    
+    .service-header h1 {
+        font-size: 28px;
+    }
+    
+    .back-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    
+    .service-section h2 {
+        font-size: 24px;
+    }
+    
+    .feature-card {
+        padding: 20px;
+    }
+    
+    .card-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* إضافة تأثيرات hover جديدة */
+.nav ul li a,
+.footer-section ul li,
+.card-body ul li,
+.price-features li {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav ul li a:hover {
+    color: var(--accent-color);
+    background-color: rgba(251, 188, 5, 0.1);
+    transform: translateX(-5px);
+}
+
+.footer-section ul li:hover {
+    transform: translateX(-5px);
+}
+
+.footer-section ul li:hover i {
+    color: var(--accent-color);
+}
+
+.card-body ul li:hover {
+    color: var(--text-color);
+    transform: translateX(-5px);
+}
+
+.price-features li:hover {
+    color: var(--text-color);
+    background-color: rgba(251, 188, 5, 0.1);
+}
+
+/* إضافة تأثير للقوائم في بطاقات الخدمات */
+.card-body ul li:before {
+    transition: all 0.3s ease;
+}
+
+.card-body ul li:hover:before {
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* إضافة تأثير للأسعار */
+.price-features li i {
+    transition: all 0.3s ease;
+}
+
+.price-features li:hover i {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
     </style>
 </head>
 <body>
@@ -708,84 +853,82 @@
         <div class="service-header">
             <div class="container">
                 <h1>تصميم مواقع الويب الاحترافية</h1>
-                <p>نقدم حلولاً متكاملة لتصميم وتطوير مواقع الويب التي تلبي احتياجات عملك وتبرز هويتك في العالم الرقمي</p>
+                <p>نحوّل أفكارك إلى واقع رقمي مذهل! نوفر حلولاً متكاملة لتصميم مواقع ويب جذابة وعالية الأداء</p>
             </div>
         </div>
-        
         
         <div class="container">
             <div class="service-content">
                 <div class="service-details">
                     <div class="service-section">
-                        <h2>نظرة عامة على الخدمة</h2>
-                        <p>في عالم يعتمد بشكل متزايد على الرقمية، يعد وجود موقع ويب احترافي أمرًا ضروريًا لأي عمل تجاري. نقدم خدمات تصميم مواقع الويب التي تجمع بين الجماليات والوظائف لإنشاء تجربة مستخدم استثنائية.</p>
-                        <p>سواء كنت بحاجة إلى موقع ويب بسيط أو متجر إلكتروني متكامل، فإن فريقنا من المصممين والمطورين المؤهلين سيعملون معك لتحقيق رؤيتك.</p>
+                        <h2>لماذا تحتاج موقع ويب؟</h2>
+                        <p>في عصر التحول الرقمي، أصبح موقع الويب هو الواجهة الرئيسية لأي عمل تجاري. نحن نقدم حلولاً متكاملة تبدأ من الفكرة وحتى الإطلاق، مع ضمان جودة عالية وأداء ممتاز.</p>
+                        <p>سواء كنت رائد أعمال، صاحب مشروع صغير، أو شركة كبرى، لدينا الحل الأمثل لاحتياجاتك. نضمن لك موقعاً سريعاً، آمناً، وسهل الاستخدام يحقق أهدافك التجارية.</p>
                     </div>
                     
                     <div class="service-section">
-                        <h2>ماذا نقدم؟</h2>
-                        <p>نحن نقدم حزمة متكاملة من خدمات تصميم وتطوير الويب تشمل:</p>
+                        <h2>مميزات خدماتنا</h2>
                         
                         <div class="feature-card">
-                            <h3><i class="fas fa-paint-brush"></i>تصميم مخصص</h3>
-                            <p>تصميم فريد ومخصص لموقعك يعكس هوية علامتك التجارية ويجذب عملائك المستهدفين.</p>
+                            <h3><i class="fas fa-paint-brush"></i>تصميم فريد</h3>
+                            <p>تصاميم مخصصة تعكس هوية علامتك التجارية، بعيدة عن القوالب الجاهزة، مع تركيز كامل على تجربة المستخدم.</p>
                         </div>
                         
                         <div class="feature-card">
-                            <h3><i class="fas fa-mobile-alt"></i>تصميم متجاوب</h3>
-                            <p>مواقع تعمل بشكل مثالي على جميع الأجهزة من أجهزة الكمبيوتر إلى الهواتف الذكية والأجهزة اللوحية.</p>
+                            <h3><i class="fas fa-mobile-alt"></i>متجاوب مع جميع الأجهزة</h3>
+                            <p>مواقع تتكيف مع جميع أحجام الشاشات بدءاً من الهواتف الذكية وحتى أجهزة الكمبيوتر المكتبية.</p>
                         </div>
                         
                         <div class="feature-card">
-                            <h3><i class="fas fa-shopping-cart"></i>متاجر إلكترونية</h3>
-                            <p>حلول متكاملة للمتاجر الإلكترونية مع أنظمة دفع وشحن وإدارة مخزون.</p>
+                            <h3><i class="fas fa-rocket"></i>أداء فائق السرعة</h3>
+                            <p>تحسين متقدم لسرعة التحميل مما يحسن تجربة المستخدم وترتيبك في محركات البحث.</p>
                         </div>
                         
                         <div class="feature-card">
-                            <h3><i class="fas fa-tachometer-alt"></i>أداء عالي</h3>
-                            <p>تحسين أداء الموقع لضمان سرعة التحميل وأفضل تجربة للمستخدم.</p>
+                            <h3><i class="fas fa-shield-alt"></i>حماية وأمان</h3>
+                            <p>نضمن حماية بياناتك وبيانات زوارك بأحدث تقنيات الحماية من الاختراقات والهجمات.</p>
                         </div>
                     </div>
                     
                     <div class="service-section">
-                        <h2>عملية التصميم</h2>
-                        <p>نتبع عملية منهجية لضمان تحقيق أفضل النتائج:</p>
-                        <ol style="padding-right: 20px; color: var(--gray-text); line-height: 1.8;">
-                            <li>الاستماع إلى متطلباتك وأهدافك</li>
-                            <li>التخطيط والهيكلة</li>
-                            <li>تصميم الواجهات</li>
-                            <li>التطوير والبرمجة</li>
-                            <li>الاختبار والتحسين</li>
-                            <li>الإطلاق والدعم</li>
+                        <h2>كيف نعمل؟</h2>
+                        <p>رحلة تصميم موقعك معنا تمر بعدة مراحل لضمان تحقيق أفضل النتائج:</p>
+                        <ol>
+                            <li><strong>الاستماع لفكرتك:</strong> نبدأ بفهم عملك وأهدافك واحتياجات جمهورك</li>
+                            <li><strong>التخطيط الاستراتيجي:</strong> نضع هيكلة الموقع وخريطة التنقل المثالية</li>
+                            <li><strong>التصميم الأولي:</strong> نقدم نماذج أولية للواجهات لضمان رضاك</li>
+                            <li><strong>التطوير والبرمجة:</strong> ننفذ التصميم بكواد نظيف وسريع</li>
+                            <li><strong>الاختبار الشامل:</strong> نختبر جميع الميزات على مختلف الأجهزة</li>
+                            <li><strong>التدريب والتسليم:</strong> نسلمك الموقع مع تدريب كامل على إدارته</li>
                         </ol>
                     </div>
                 </div>
                 
                 <div class="service-features">
                     <div class="pricing-card">
-                        <h3>حزمة تصميم الموقع الأساسي</h3>
-                        <div class="price" style="text-decoration: underline;">99 <span style="font-size: 0.9em;">درهم </span></div>
+                        <h3>حزمة الموقع الأساسي</h3>
+                        <div class="price">99$</div>
                         <ul class="price-features">
-                            <li><i class="fas fa-check"></i>تصميم 5 صفحات</li>
-                            <li><i class="fas fa-check"></i>استجابة للهواتف</li>
+                            <li><i class="fas fa-check"></i>تصميم 5 صفحات رئيسية</li>
+                            <li><i class="fas fa-check"></i>تصميم متجاوب</li>
                             <li><i class="fas fa-check"></i>نموذج اتصال</li>
-                            <li><i class="fas fa-check"></i>خريطة الموقع</li>
+                            <li><i class="fas fa-check"></i>إعدادات SEO أساسية</li>
                             <li><i class="fas fa-check"></i>دعم لمدة شهر</li>
                         </ul>
-                        <a href="#pricing-section" class="btn">اطلب الخدمة الآن</a>
+                        <a href="#contact" class="btn">اطلب الآن</a>
                     </div>
                     
-                    <div class="contact-card" style="background-color: var(--light-bg); padding: 20px; border-radius: 8px; margin-top: 30px;">
-                        <h3 style="color: var(--primary); margin-bottom: 15px;">هل لديك استفسار؟</h3>
-                        <p style="color: var(--gray-text); margin-bottom: 15px;">نحن هنا لمساعدتك في أي استفسار لديك حول خدماتنا.</p>
-                        <a href="contact.html" class="btn btn-outline">اتصل بنا</a>
+                    <div class="contact-card">
+                        <h3>هل لديك مشروع خاص؟</h3>
+                        <p>نقدم حلولاً مخصصة تناسب متطلباتك الفريدة. تواصل معنا لمعرفة المزيد.</p>
+                        <a href="contact.html" class="btn btn-outline">ناقش مشروعك</a>
                     </div>
                 </div>
             </div>
             
-            <!-- قسم باقات الأسعار الجديد -->
-            <div class="pricing-section" id="#pricing-section">
-                <h2>باقات تصميم المواقع لدينا</h2>
+            <!-- قسم باقات الأسعار -->
+            <div class="pricing-section" id="pricing">
+                <h2>باقات تصميم المواقع</h2>
                 <div class="pricing-cards">
                     <!-- بطاقة الخدمة 1 -->
                     <div class="service-card">
@@ -793,8 +936,8 @@
                             <div class="card-icon">
                                 <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="تصميم أساسي">
                             </div>
-                            <h3 class="service-title">التصميم الأساسي</h3>
-                            <p class="service-desc">حلول تصميم مواقع للمبتدئين والهواة</p>
+                            <h3 class="service-title">الباقة الأساسية</h3>
+                            <p class="service-desc">مناسبة للمواقع الشخصية والصفحات التعريفية</p>
                         </div>
                         <div class="card-body">
                             <ul>
@@ -802,13 +945,13 @@
                                 <li>تصميم متجاوب مع الأجهزة</li>
                                 <li>نموذج اتصال أساسي</li>
                                 <li>ألوان وخطوط مخصصة</li>
-                                <li>شعار الموقع</li>
+                                <li>إعدادات SEO أساسية</li>
                                 <li>دعم فني لمدة شهر</li>
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <span class="price">99$</span>
-                            <a class="action-btn">اختيار الباقة</a>
+                            <span class="price-small">99$</span>
+                            <button class="action-btn">اختر الباقة</button>
                         </div>
                     </div>
                     
@@ -819,7 +962,7 @@
                             <div class="card-icon">
                                 <img src="https://cdn-icons-png.flaticon.com/512/2933/2933245.png" alt="تصميم متقدم">
                             </div>
-                            <h3 class="service-title">التصميم المتقدم</h3>
+                            <h3 class="service-title">باقة الشركات</h3>
                             <p class="service-desc">حلول متكاملة للشركات والمؤسسات</p>
                         </div>
                         <div class="card-body">
@@ -827,14 +970,14 @@
                                 <li>تصميم 10 صفحات متكاملة</li>
                                 <li>نظام إدارة محتوى (CMS)</li>
                                 <li>نماذج اتصال متقدمة</li>
-                                <li>تحسين لمحركات البحث</li>
+                                <li>تحسين متقدم لمحركات البحث</li>
                                 <li>إضافة مدونة للموقع</li>
                                 <li>دعم فني لمدة 3 أشهر</li>
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <span class="price">199$</span>
-                            <button class="action-btn">اختيار الباقة</button>
+                            <span class="price-small">199$</span>
+                            <button class="action-btn">اختر الباقة</button>
                         </div>
                     </div>
                     
@@ -844,22 +987,22 @@
                             <div class="card-icon">
                                 <img src="https://cdn-icons-png.flaticon.com/512/2620/2620971.png" alt="تصميم مميز">
                             </div>
-                            <h3 class="service-title">التصميم المميز</h3>
-                            <p class="service-desc">حلول احترافية بأعلى جودة للشركات الكبرى</p>
+                            <h3 class="service-title">باقة المتاجر</h3>
+                            <p class="service-desc">حلول احترافية للمتاجر الإلكترونية</p>
                         </div>
                         <div class="card-body">
                             <ul>
-                                <li>تصميم غير محدود الصفحات</li>
                                 <li>متجر إلكتروني متكامل</li>
-                                <li>نظام حجز مواعيد</li>
+                                <li>نظام دفع إلكتروني</li>
+                                <li>إدارة المخزون والطلبات</li>
                                 <li>تحسين متقدم لمحركات البحث</li>
-                                <li>تصميم هوية بصرية كاملة</li>
+                                <li>لوحة تحكم كاملة</li>
                                 <li>دعم فني لمدة 6 أشهر</li>
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <span class="price">299$</span>
-                            <button class="action-btn">اختيار الباقة</button>
+                            <span class="price-small">299$</span>
+                            <button class="action-btn">اختر الباقة</button>
                         </div>
                     </div>
                 </div>
@@ -867,26 +1010,26 @@
             
             <!-- معرض أعمال -->
             <div class="portfolio">
-                <h2>معرض أعمالنا</h2>
+                <h2>أحدث أعمالنا</h2>
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                        <img src="images/shop2.png" alt="موقع تجاري">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="موقع تجاري">
                         <div class="portfolio-item-info">
-                            <h3>موقع تجاري</h3>
-                            <p>تصميم موقع لشركة تجارية</p>
+                            <h3>موقع شركة التقنية</h3>
+                            <p>تصميم حديث لشركة متخصصة في الحلول البرمجية</p>
                         </div>
                     </div>
                     
                     <div class="portfolio-item">
-                        <img src="images/shop.png" alt="متجر إلكتروني">
+                        <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="متجر إلكتروني">
                         <div class="portfolio-item-info">
                             <h3>متجر إلكتروني</h3>
-                            <p>تصميم متجر لبيع المنتجات</p>
+                            <p>تصميم متجر لبيع المنتجات الرقمية</p>
                         </div>
                     </div>
                     
                     <div class="portfolio-item">
-                        <img src="images/profilio.png" alt="موقع شخصي">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="موقع شخصي">
                         <div class="portfolio-item-info">
                             <h3>موقع شخصي</h3>
                             <p>تصميم موقع لصاحب عمل حر</p>
@@ -908,7 +1051,6 @@
                         <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
                         <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="تيك توك"><i class="fab fa-tiktok"></i></a>
                         <a href="#" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
@@ -940,9 +1082,7 @@
     </footer>
 
     <script>
-        // معالجة إرسال النموذج
         document.addEventListener('DOMContentLoaded', function() {
-            // تأثير الظهور التدريجي
             const sections = document.querySelectorAll('.service-section, .portfolio-item');
             
             const observer = new IntersectionObserver((entries) => {
@@ -955,41 +1095,6 @@
             
             sections.forEach(section => {
                 observer.observe(section);
-            });
-            
-            // معالجة إرسال النموذج
-            document.getElementById('service-form')?.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                const form = e.target;
-                const formData = new FormData(form);
-                const messageDiv = document.getElementById('form-message');
-                
-                try {
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-                    
-                    if (response.ok) {
-                        messageDiv.textContent = 'تم إرسال طلبك بنجاح! سنتواصل معك قريباً.';
-                        messageDiv.className = 'form-message success';
-                        form.reset();
-                    } else {
-                        throw new Error('فشل في إرسال النموذج');
-                    }
-                } catch (error) {
-                    messageDiv.textContent = 'حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى لاحقاً.';
-                    messageDiv.className = 'form-message error';
-                }
-                
-                // إخفاء الرسالة بعد 5 ثواني
-                setTimeout(() => {
-                    messageDiv.style.display = 'none';
-                }, 5000);
             });
         });
     </script>

@@ -1,576 +1,606 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدمات مونتاج الفيديو الاحترافية</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #4361ee;
-            --primary-dark: #3a0ca3;
-            --accent: #f72585;
-            --accent-light: #ff70a6;
-            --dark: #14213d;
-            --light: #f8f9fa;
-            --gray: #e9ecef;
-            --radius: 12px;
-            --shadow: 0 5px 15px rgba(0,0,0,0.1);
-            --shadow-hover: 0 15px 30px rgba(0,0,0,0.15);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدمات مونتاج الفيديو الاحترافية</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #1a73e8;
+      --primary-dark: #0d47a1;
+      --accent-color: #fbbc05;
+      --dark-bg: #121212;
+      --darker-bg: #0a0a0a;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --text-secondary: #b0b0b0;
+      --border-color: #333;
+      --glass-bg: rgba(30, 30, 30, 0.7);
+      --radius: 12px;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', 'Tahoma', sans-serif;
-            text-decoration: none;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Lalezar', cursive;
+      text-decoration: none;
+    }
 
-        body {
-            background: var(--light);
-            line-height: 1.8;
-            color: var(--dark);
-        }
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
 
-        /* الترويسة */
-        .header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 8rem 2rem 10rem;
-            text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+      color: white;
+      padding: 8rem 2rem 10rem;
+      text-align: center;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.05)" points="0,100 100,0 100,100"/></svg>');
-            background-size: cover;
-            opacity: 0.3;
-        }
+    .header::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      opacity: 0.2;
+    }
 
-        .header h1 {
-            font-size: 3.2rem;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease;
-            position: relative;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
+    .header h1 {
+      font-size: 3.2rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1s ease;
+      position: relative;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
-        .header p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.9;
-            position: relative;
-            animation: fadeInUp 1s ease 0.3s forwards;
-            opacity: 0;
-        }
+    .header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+      position: relative;
+      animation: fadeInUp 1s ease 0.3s forwards;
+      opacity: 0;
+    }
 
-        /* العناصر العامة */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+    /* العناصر العامة */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
-        section {
-            padding: 5rem 0;
-        }
+    section {
+      padding: 5rem 0;
+    }
 
-        h2 {
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
+    h2 {
+      font-size: 2.5rem;
+      color: var(--primary-dark);
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent-color);
+      border-radius: 2px;
+    }
 
-        /* بطاقات الخدمات - النسخة المحسنة مع الحفاظ على الهيكل */
-        .services-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 3rem;
-        }
+    /* بطاقات الخدمات - النسخة المحسنة مع الحفاظ على الهيكل */
+    .services-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
 
-        .service-card {
-            background: white;
-            flex: 1 1 300px;
-            max-width: 350px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid rgba(37, 99, 235, 0.1);
-        }
+    .service-card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border-color);
+    }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+    .card-header {
+      padding: 1.5rem 2rem;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+      position: relative;
+      overflow: hidden;
+    }
 
-        .card-header {
-            padding: 1.5rem 2rem;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(34, 211, 238, 0.05) 100%);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
+    .card-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      opacity: 0.1;
+    }
 
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
-            margin-bottom: 1rem;
-            border: 1px solid rgba(37, 99, 235, 0.1);
-        }
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1rem;
+      border: 1px solid var(--border-color);
+    }
 
-        .card-icon img {
-            width: 30px;
-            height: 30px;
-        }
+    .card-icon img {
+      width: 30px;
+      height: 30px;
+    }
 
-        .service-title {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
+    .service-title {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
 
-        .service-desc {
-            color: #64748b;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
+    .service-desc {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+    }
 
-        .card-body {
-            padding: 1.5rem 2rem;
-        }
+    .card-body {
+      padding: 1.5rem 2rem;
+    }
 
-        .service-card ul {
-            list-style: none;
-            padding: 0.5rem 0;
-        }
+    .service-card ul {
+      list-style: none;
+    }
 
-        .service-card li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #f1f5f9;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            transition: all 0.2s ease;
-        }
+    .service-card li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
 
-        .service-card li:hover {
-            color: var(--primary);
-            transform: translateX(5px);
-        }
+    .service-card li:hover {
+      color: var(--accent-color);
+      transform: translateX(5px);
+    }
 
-        .service-card li::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: inline-block;
-        }
+    .service-card li::before {
+      content: "•";
+      color: var(--accent-color);
+      font-size: 24px;
+    }
 
-        .card-footer {
-            padding: 1rem 2rem;
-            background: #f8fafc;
-            border-top: 1px solid #f1f5f9;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .card-footer {
+      padding: 1rem 2rem;
+      background: var(--darker-bg);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .price {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.3rem;
-        }
+    .price {
+      color: var(--accent-color);
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
 
-        .action-btn {
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 0.6rem 1.5rem;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.9rem;
-        }
+    .action-btn {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid var(--primary-color);
+      text-decoration: none;
+      display: inline-block;
+    }
 
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-        }
+    .action-btn:hover {
+      background: transparent;
+      color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
 
-        .popular-tag {
-            position: absolute;
-            top: 20px;
-            left: -30px;
-            background: var(--accent);
-            color: white;
-            padding: 0.3rem 2.5rem;
-            font-size: 0.8rem;
-            transform: rotate(-45deg);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+    .popular-tag {
+      position: absolute;
+      top: 20px;
+      left: -30px;
+      background: var(--accent-color);
+      color: var(--dark-bg);
+      padding: 0.3rem 2.5rem;
+      font-size: 0.8rem;
+      transform: rotate(-45deg);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
-        /* باقي أقسام الصفحة */
-        .pricing-box {
-            background: linear-gradient(135deg, var(--primary-dark), #2a0a8f);
-            color: white;
-            padding: 3rem;
-            border-radius: var(--radius);
-            text-align: center;
-            margin: 4rem 0;
-            box-shadow: 0 20px 40px rgba(58, 12, 163, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
+    /* باقي أقسام الصفحة */
+    .pricing-box {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+      color: white;
+      padding: 3rem;
+      border-radius: var(--radius);
+      text-align: center;
+      margin: 4rem 0;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .pricing-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            transform: rotate(30deg);
-        }
+    .video-sample {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 4rem 0;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .video-sample {
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-            margin: 4rem 0;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            aspect-ratio: 16/9;
-            background: var(--dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .video-link {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-        .video-sample::before {
-            content: '\f144';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            color: white;
-            font-size: 5rem;
-            position: absolute;
-            z-index: 2;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-        }
+    .video-link img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
 
-        .video-sample:hover::before {
-            transform: scale(1.1);
-            opacity: 1;
-        }
+    .video-link:hover img {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
 
-        .video-sample img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
+    .play-button {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: rgba(26, 115, 232, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
 
-        .video-sample:hover img {
-            opacity: 0.9;
-        }
+    .play-button i {
+      color: white;
+      font-size: 30px;
+      margin-right: 5px;
+    }
 
-        .contact-section {
-            background: white;
-            padding: 3rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .video-link:hover .play-button {
+      background: var(--primary-color);
+      transform: scale(1.1);
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
+    .contact-section {
+      background: white;
+      padding: 3rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-        .form-group {
-            position: relative;
-        }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
 
-        input, textarea {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border: 2px solid var(--gray);
-            border-radius: var(--radius);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: var(--light);
-        }
+    .form-group {
+      position: relative;
+    }
 
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-        }
+    input,
+    textarea {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 2px solid var(--gray);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: var(--light);
+    }
 
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
+    footer {
+      background: var(--darker-bg);
+      border-top: 1px solid var(--border-color);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
 
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .social-links a {
+      color: var(--text-color);
+      background: var(--card-bg);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
 
-        @media (max-width: 768px) {
-            .header {
-                padding: 6rem 1rem 8rem;
-            }
-            .header h1 {
-                font-size: 2.2rem;
-            }
-            h2 {
-                font-size: 2rem;
-            }
-            .service-card {
-                flex: 1 1 100%;
-            }
-        }
-        .back-btn {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-size: 16px;
-            margin: 20px;
-            margin-top: 20px;
-        }
-        .back-btn {
-    color: rgba(255, 255, 255, 0.8); /* لون نص شبه شفاف */
-    text-decoration: none;
-    font-size: 16px;
-    margin: 20px;
-    padding: 8px 15px;
-    border-radius: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s;
-    background-color: rgba(0, 0, 0, 0.2); /* خلفية شبه شفافة */
-    backdrop-filter: blur(4px); /* تأثير ضبابي للدمج */
-}
+    .social-links a:hover {
+      background: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
 
-.back-btn:hover {
-    background-color: rgba(0, 0, 0, 0.4); /* تظليل أقوى عند التمرير */
-    color: white;
-}
+    .back-btn {
+      color: var(--accent-color);
+      background-color: rgba(251, 188, 5, 0.1);
+      padding: 8px 15px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+      border: 1px solid rgba(251, 188, 5, 0.3);
+    }
 
+    .back-btn:hover {
+      background-color: rgba(251, 188, 5, 0.2);
+      transform: translateX(5px);
+    }
 
-    </style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 6rem 1rem 8rem;
+      }
+
+      .header h1 {
+        font-size: 2.2rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .service-card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    
-    <header class="header">
-        <a href="index.html" class="back-btn">
-            <i class="fas fa-arrow-right"></i> العودة للمتجر
-        </a>
-        <div class="container">
-            <h1>احترف مونتاج الفيديو مع أفضل الخدمات</h1>
-            <p>خدمات مونتاج فيديو احترافية للمبدعين والشركات بجودة عالية وسرعة في التنفيذ</p>
-        </div>
-    </header>
 
-    <main class="container">
-        <section class="services">
-            <h2>الخدمات المقدمة</h2>
-            <div class="services-container">
-                <!-- بطاقة الخدمة 1 -->
-                <div class="service-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="مونتاج أساسي">
-                        </div>
-                        <h3 class="service-title">المونتاج الأساسي</h3>
-                        <p class="service-desc">حلول مونتاج احترافية للمبتدئين والهواة</p>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>قص ولصق المشاهد باحترافية</li>
-                            <li>الانتقالات البسيطة والأنيقة</li>
-                            <li>ضبط مستوى الصوت وتنقيته</li>
-                            <li>جودة تصوير 720p</li>
-                            <li>إضافة شعار أو نص</li>
-                            <li>تنسيقات متعددة للتصدير</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">39.99$</span>
-                        <a href="pay.html" class="action-btn">اختيار الباقة</a>
-                    </div>
-                </div>
-                
-                <!-- بطاقة الخدمة 2 -->
-                <div class="service-card">
-                    <div class="popular-tag">الأكثر طلباً</div>
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2933/2933245.png" alt="مونتاج متقدم">
-                        </div>
-                        <h3 class="service-title">المونتاج المتقدم</h3>
-                        <p class="service-desc">حلول متكاملة للمحترفين والشركات</p>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>انتقالات معقدة ومبتكرة</li>
-                            <li>تصحيح الألوان بشكل احترافي</li>
-                            <li>تعديل الصوت وإزالة الضوضاء</li>
-                            <li>جودة تصوير 1080p فائقة الوضوح</li>
-                            <li>إضافة مؤثرات نصية متحركة</li>
-                            <li>تعديلات متقدمة على الإضاءة</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">120$</span>
-                        <button class="action-btn">اختيار الباقة</button>
-                    </div>
-                </div>
-                
-                <!-- بطاقة الخدمة 3 -->
-                <div class="service-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2620/2620971.png" alt="مونتاج مميز">
-                        </div>
-                        <h3 class="service-title">المونتاج المميز</h3>
-                        <p class="service-desc">حلول سينمائية احترافية بأعلى جودة</p>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>الرسوم المتحركة والمؤثرات البصرية</li>
-                            <li>المؤثرات السينمائية الاحترافية</li>
-                            <li>جودة 4K بدرجات ألوان سينمائية</li>
-                            <li>دعم فوري ومباشر 24/7</li>
-                            <li>تعديلات غير محدودة حتى الإشباع</li>
-                            <li>تسليم المشروع على مراحل</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <span class="price">250$</span>
-                        <button class="action-btn">اختيار الباقة</button>
-                    </div>
-                </div>
+  <header class="header">
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-right"></i> العودة للمتجر
+    </a>
+    <div class="container">
+      <h1>احترف مونتاج الفيديو مع أفضل الخدمات</h1>
+      <p>خدمات مونتاج فيديو احترافية للمبدعين والشركات بجودة عالية وسرعة في التنفيذ</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="services">
+      <h2>الخدمات المقدمة</h2>
+      <div class="services-container">
+        <!-- بطاقة الخدمة 1 -->
+        <div class="service-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="مونتاج أساسي">
             </div>
-        </section>
-
-        <section class="pricing-box">
-            <h2 style="color: white;">باقات خاصة للمشاريع الكبيرة</h2>
-            <div style="font-size: 3.5rem; margin: 1.5rem 0; font-weight: bold;">40$<span style="font-size: 1.2rem; opacity: 0.9; font-weight: normal;">لكل دقيقة</span></div>
-            <p style="margin-bottom: 1.5rem;">خصم يصل إلى 30% للمشاريع طويلة المدى</p>
-            <button class="action-btn" style="padding: 1rem 2rem; font-size: 1rem; margin: 0 auto;">احصل على عرض سعر</button>
-        </section>
-
-        <section class="video-sample">
-            <img src="https://images.unsplash.com/photo-1559703248-dca5ec95c047?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="عينة مونتاج فيديو">
-        </section>
-
-        <section class="contact-section">
-            <h2>هل أنت جاهز للبدء؟</h2>
-            <form>
-                <div class="form-group">
-                    <input type="text" placeholder="الاسم بالكامل" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="البريد الإلكتروني" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" placeholder="رقم الهاتف (اختياري)">
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="تفاصيل المشروع (المدة، النوع، الموعد النهائي، الخ)" required rows="6"></textarea>
-                </div>
-                <button type="submit" class="action-btn" style="padding: 1rem 2rem; font-size: 1rem; margin: 0 auto;">إرسال الطلب</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <h3>تواصل معنا</h3>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-            <p>جميع الحقوق محفوظة &copy; 2023 خدمات مونتاج الفيديو الاحترافية</p>
+            <h3 class="service-title">المونتاج الأساسي</h3>
+            <p class="service-desc">حلول مونتاج احترافية للمبتدئين والهواة</p>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>قص ولصق المشاهد باحترافية</li>
+              <li>الانتقالات البسيطة والأنيقة</li>
+              <li>ضبط مستوى الصوت وتنقيته</li>
+              <li>جودة تصوير 720p</li>
+              <li>إضافة شعار أو نص</li>
+              <li>تنسيقات متعددة للتصدير</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <span class="price">39.99$</span>
+            <a href="pay.html" class="action-btn">اختيار الباقة</a>
+          </div>
         </div>
-    </footer>
+
+        <!-- بطاقة الخدمة 2 -->
+        <div class="service-card">
+          <div class="popular-tag">الأكثر طلباً</div>
+          <div class="card-header">
+            <div class="card-icon">
+              <img src="https://cdn-icons-png.flaticon.com/512/2933/2933245.png" alt="مونتاج متقدم">
+            </div>
+            <h3 class="service-title">المونتاج المتقدم</h3>
+            <p class="service-desc">حلول متكاملة للمحترفين والشركات</p>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>انتقالات معقدة ومبتكرة</li>
+              <li>تصحيح الألوان بشكل احترافي</li>
+              <li>تعديل الصوت وإزالة الضوضاء</li>
+              <li>جودة تصوير 1080p فائقة الوضوح</li>
+              <li>إضافة مؤثرات نصية متحركة</li>
+              <li>تعديلات متقدمة على الإضاءة</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <span class="price">120$</span>
+            <button class="action-btn">اختيار الباقة</button>
+          </div>
+        </div>
+
+        <!-- بطاقة الخدمة 3 -->
+        <div class="service-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <img src="https://cdn-icons-png.flaticon.com/512/2620/2620971.png" alt="مونتاج مميز">
+            </div>
+            <h3 class="service-title">المونتاج المميز</h3>
+            <p class="service-desc">حلول سينمائية احترافية بأعلى جودة</p>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>الرسوم المتحركة والمؤثرات البصرية</li>
+              <li>المؤثرات السينمائية الاحترافية</li>
+              <li>جودة 4K بدرجات ألوان سينمائية</li>
+              <li>دعم فوري ومباشر 24/7</li>
+              <li>تعديلات غير محدودة حتى الإشباع</li>
+              <li>تسليم المشروع على مراحل</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <span class="price">250$</span>
+            <button class="action-btn">اختيار الباقة</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing-box">
+      <h2 style="color: white;">باقات خاصة للمشاريع الكبيرة</h2>
+      <div style="font-size: 3.5rem; margin: 1.5rem 0; font-weight: bold;">40$<span
+          style="font-size: 1.2rem; opacity: 0.9; font-weight: normal;">لكل دقيقة</span></div>
+      <p style="margin-bottom: 1.5rem;">خصم يصل إلى 30% للمشاريع طويلة المدى</p>
+      <button class="action-btn" style="padding: 1rem 2rem; font-size: 1rem; margin: 0 auto;">احصل على عرض سعر</button>
+    </section>
+
+    <section class="video-sample">
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+        <img
+          src="https://images.unsplash.com/photo-1559703248-dca5ec95c047?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+          alt="عينة مونتاج فيديو">
+        <div class="play-button">
+          <i class="fas fa-play"></i>
+        </div>
+      </a>
+    </section>
+
+    <section class="contact-section">
+      <h2>هل أنت جاهز للبدء؟</h2>
+      <form>
+        <div class="form-group">
+          <input type="text" placeholder="الاسم بالكامل" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="البريد الإلكتروني" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" placeholder="رقم الهاتف (اختياري)">
+        </div>
+        <div class="form-group">
+          <textarea placeholder="تفاصيل المشروع (المدة، النوع، الموعد النهائي، الخ)" required rows="6"></textarea>
+        </div>
+        <button type="submit" class="action-btn" style="padding: 1rem 2rem; font-size: 1rem; margin: 0 auto;">إرسال
+          الطلب</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <h3>تواصل معنا</h3>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p>جميع الحقوق محفوظة &copy; 2023 خدمات مونتاج الفيديو الاحترافية</p>
+    </div>
+  </footer>
 </body>
+
 </html>

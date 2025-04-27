@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجاتنا - متجرنا الإلكتروني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #4169E1;
+            --secondary-blue: #87CEEB;
+            --light-bg: #F7F9FC;
+            --dark-text: #333333;
+            --gray-text: #666666;
+            --border-color: #DDDDDD;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* شريط التنقل */
+        .header {
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        
+        .search-bar {
+            flex: 1;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            font-size: 16px;
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-text);
+        }
+        
+        .user-actions a {
+            color: var(--dark-text);
+            margin-right: 15px;
+            text-decoration: none;
+        }
+        
+        .cart-icon {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* فلترة المنتجات */
+        .filters {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .filter-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 5px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background-color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        /* قائمة المنتجات */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #E53935;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-title {
+            font-size: 16px;
+            margin-bottom: 5px;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .product-brand {
+            color: var(--gray-text);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .price-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .current-price {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: var(--gray-text);
+            font-size: 14px;
+            margin-right: 8px;
+        }
+        
+        .rating {
+            color: #FFB800;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 8px;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #2a4fc5;
+        }
+        
+        /* تذييل الصفحة */
+        .footer {
+            background-color: white;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section ul li a {
+            color: var(--gray-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--gray-text);
+            font-size: 14px;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                margin: 15px 0;
+                width: 100%;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .product-title {
+                font-size: 14px;
+                height: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">متجرنا</div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="ابحث عن منتجات...">
+                <i class="fas fa-search"></i>
+            </div>
+            
+            <div class="user-actions">
+                <a href="#"><i class="far fa-user"></i></a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- محتوى الصفحة -->
+    <div class="container">
+        <h1>منتجاتنا</h1>
+        
+        <!-- فلترة المنتجات -->
+        <div class="filters">
+            <div class="filter-title">التصنيفات:</div>
+            <div class="filter-options">
+                <button class="filter-btn active">الكل</button>
+                <button class="filter-btn">الهواتف</button>
+                <button class="filter-btn">الحواسيب</button>
+                <button class="filter-btn">الأجهزة اللوحية</button>
+                <button class="filter-btn">الاكسسوارات</button>
+            </div>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-title">ترتيب حسب:</div>
+            <div class="filter-options">
+                <button class="filter-btn active">الأكثر مبيعاً</button>
+                <button class="filter-btn">الأحدث</button>
+                <button class="filter-btn">السعر من الأقل للأعلى</button>
+                <button class="filter-btn">السعر من الأعلى للأقل</button>
+                <button class="filter-btn">أعلى التقييمات</button>
+            </div>
+        </div>
+        
+        <!-- قائمة المنتجات -->
+        <div class="products-grid">
+            <!-- منتج 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/61bK6PMOC3L._AC_UF1000,1000_QL80_.jpg" alt="iPhone 16 Pro Max">
+                    <div class="discount-badge">خصم 15%</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">iPhone 16 Pro Max - 256GB</h3>
+                    <p class="product-brand">Apple</p>
+                    <div class="price-container">
+                        <span class="current-price">3,999 ر.س</span>
+                        <span class="old-price">4,699 ر.س</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span style="color: var(--gray-text); font-size: 12px;">(248)</span>
+                    </div>
+                    <button class="add-to-cart">أضف إلى السلة</button>
+                </div>
+            </div>
+            
+            <!-- منتج 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/71T5NVOgbpL._AC_UF1000,1000_QL80_.jpg" alt="Samsung Galaxy S24 Ultra">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Samsung Galaxy S24 Ultra - 512GB</h3>
+                    <p class="product-brand">Samsung</p>
+                    <div class="price-container">
+                        <span class="current-price">4,299 ر.س</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span style="color: var(--gray-text); font-size: 12px;">(187)</span>
+                    </div>
+                    <button class="add-to-cart">أضف إلى السلة</button>
+                </div>
+            </div>
+            
+            <!-- منتج 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/71L2iBSyyOL._AC_UF1000,1000_QL80_.jpg" alt="MacBook Pro M3">
+                    <div class="discount-badge">خصم 10%</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MacBook Pro 14-inch M3 Pro</h3>
+                    <p class="product-brand">Apple</p>
+                    <div class="price-container">
+                        <span class="current-price">8,999 ر.س</span>
+                        <span class="old-price">9,999 ر.س</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span style="color: var(--gray-text); font-size: 12px;">(356)</span>
+                    </div>
+                    <button class="add-to-cart">أضف إلى السلة</button>
+                </div>
+            </div>
+            
+            <!-- منتج 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/71KCwNV6MuL._AC_UF1000,1000_QL80_.jpg" alt="iPad Pro 2024">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">iPad Pro 12.9-inch 2024</h3>
+                    <p class="product-brand">Apple</p>
+                    <div class="price-container">
+                        <span class="current-price">5,499 ر.س</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span style="color: var(--gray-text); font-size: 12px;">(412)</span>
+                    </div>
+                    <button class="add-to-cart">أضف إلى السلة</button>
+                </div>
+            </div>
+            
+            <!-- منتج 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/71ZOtNdaZCL._AC_UF1000,1000_QL80_.jpg" alt="AirPods Pro 2">
+                    <div class="discount-badge">خصم 20%</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">AirPods Pro 2nd Generation</h3>
+                    <p class="product-brand">Apple</p>
+                    <div class="price-container">
+                        <span class="current-price">899 ر.س</span>
+                        <span class="old-price">1,099 ر.س</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span style="color: var(--gray-text); font-size: 12px;">(1,024)</span>
+                    </div>
+                    <button class="add-to-cart">أضف إلى السلة</button>
+                </div>
+            </div>
+            
+            <!-- منتج 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/71S8qt+F8HL._AC_UF1000,1000_QL80_.jpg" alt="Apple Watch Ultra 2">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Apple Watch Ultra 2</h3>
+                    <p class="product-brand">Apple</p>
+                    <div class="price-container">
+                        <span class="current-price">2,799 ر.س</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span style="color: var(--gray-text); font-size: 12px;">(387)</span>
+                    </div>
+                    <button class="add-to-cart">أضف إلى السلة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- تذييل الصفحة -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#">الصفحة الرئيسية</a></li>
+                        <li><a href="#">منتجاتنا</a></li>
+                        <li><a href="#">خدماتنا</a></li>
+                        <li><a href="#">عن المتجر</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>خدمة العملاء</h3>
+                    <ul>
+                        <li><a href="#">حسابي</a></li>
+                        <li><a href="#">تتبع الطلب</a></li>
+                        <li><a href="#">سياسة الإرجاع</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@store.com</li>
+                        <li><i class="fas fa-phone"></i> +966 12 345 6789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 متجرنا الإلكتروني. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // فلترة المنتجات
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        // إضافة إلى السلة
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const productTitle = this.closest('.product-card').querySelector('.product-title').textContent;
+                alert(`تمت إضافة "${productTitle}" إلى سلة التسوق`);
+                
+                // زيادة عداد السلة
+                const cartCount = document.querySelector('.cart-count');
+                cartCount.textContent = parseInt(cartCount.textContent) + 1;
+            });
+        });
+        
+        // بحث المنتجات
+        const searchInput = document.querySelector('.search-bar input');
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.toLowerCase();
+                const products = document.querySelectorAll('.product-card');
+                
+                products.forEach(product => {
+                    const title = product.querySelector('.product-title').textContent.toLowerCase();
+                    const brand = product.querySelector('.product-brand').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || brand.includes(searchTerm)) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
